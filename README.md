@@ -8,7 +8,7 @@ museum
 | **Shiqi.Gao** | 2364044 | It is hoped that more people will be able to learn about our country's history, culture and objects through the Fun Museum. |
 | **Jielin.Wang** | 2364423 | I am a third-year student at Xi'an Jiaotong-Liverpool University, passionate about museums and digital technology. I chose the "My stories in museums" theme to bring cultural relics "alive", letting more people touch history and feel culture on their phones. |
 | **Yi.Li** | 2361372 | I'm a Digital Media and Technology major from the class of 2023 at XJTLU. I chose the project theme "My stories in museums" mainly because I am a museum enthusiast. However, I have found that the young nowadays are becoming less and less interested in museums, so I hope I can do something to show them the charm of museums. |
-| **Member 4** | 2361XXX | 介绍 |
+| **Kai.Xu** | 2361744 | I am a student majoring in Digital Media Technology from Xi'an Jiaotong-Liverpool University.I have a keen interest in XR technology and have established a solid programming foundation for relevant research and development. |
 
 
 ## 👥 User Persona
