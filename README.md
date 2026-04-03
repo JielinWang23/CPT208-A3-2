@@ -20,7 +20,7 @@ museum
 
 
 
-## Museum Interest Survey Results
+## 🎬 Museum Interest Survey Results
 
 | Survey Item | Data Result | Key Insight |
 | :--- | :--- | :--- |
@@ -35,7 +35,7 @@ Over 70% of young people are not interested in museums, with the vast majority f
 
 
 
-## Museum Visitor Interviews: Key Insights
+## 🎬 Museum Visitor Interviews: Key Insights
 
 To better understand why young people find museums uninteresting and what changes would encourage them to visit, we conducted five interviews with individuals aged 12 to 26. The findings are summarized below.
 
