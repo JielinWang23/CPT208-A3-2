@@ -74,6 +74,32 @@ Across all age groups (12–26), young people consistently want museums to shift
 
 
 
+# 🚀 Version 2.0
+
+## Key Updates
+
+### 1. Gamification & UX Optimization
+
+The initial UI design prioritized the integration of AI with exhibit introductions. While AR gameplay was included in the original concept, we found that designing unique mini-games for each individual exhibit resulted in excessively high development costs and long iteration cycles.
+
+To address this, we optimized the gamification strategy in v2.0.0:
+
+- **Homepage Achievement Showcase**  
+  Moved the check-in achievement system to the homepage for prominent display, significantly boosting user engagement and interactive fun without the overhead of per-exhibit game development.
+
+- **AR Real-world Fun Map**  
+  Added an AR-powered interactive map that overlays the museum's physical space, helping visitors easily locate and navigate to check-in exhibits, improving the overall on-site experience.
+
+### 2. Cost & Efficiency Improvement
+
+- **Removed high-cost per-exhibit game design**  
+  Eliminated the resource-intensive plan of building custom games for each exhibit, reducing development workload while retaining core gamification value.
+
+- **Unified achievement system**  
+  Implemented a centralized, scalable check-in and reward system that is easy to maintain and iterate for future updates.
+
+
+  
 ## 📝 Draft 2
 
 ![second Draft](https://github.com/JielinWang23/CPT208-A3-2/issues/2#issue-4210725583)
