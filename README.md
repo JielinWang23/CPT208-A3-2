@@ -70,7 +70,7 @@ Across all age groups (12–26), young people consistently want museums to shift
 
 ## 📝 UI 1
 
-![first UI](https://github.com/JielinWang23/CPT208-A3-2/issues/3#issue-4259926289))
+![first UI](https://github.com/JielinWang23/CPT208-A3-2/issues/3#issue-4259926289)
 
 
 
