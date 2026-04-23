@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPT208-A3-2 | Museum AR Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.7;
+            padding-top: 70px; /* 给固定导航栏留位置 */
+        }
+
+        /* 固定顶部导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #161b22ee;
+            backdrop-filter: blur(8px);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            z-index: 999;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .navbar a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .navbar a:hover {
+            color: #58a6ff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .hero {
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #8b949e;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #238636;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #2ea043;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            color: #7ee787;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #161b22;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table th, .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .table th {
+            background: #21262d;
+            color: #8b949e;
+        }
+
+        .name {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        @media (max-width:600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .navbar { gap:14px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 固定导航栏 -->
+<div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#team">Team</a>
+    <a href="https://github.com/JielinWang23/CPT208-A3-2">GitHub</a>
+</div>
+
+<div class="container">
+    <section class="hero" id="home">
+        <h1>CPT208-A3-2</h1>
+        <p>AR Museum Experience · Digital Media Technology Project</p>
+        <a href="#team" class="btn">View Team</a>
+    </section>
+
+    <section class="section" id="about">
+        <h2>About Project</h2>
+        <p>This project focuses on museum AR interaction and digital cultural presentation, allowing users to experience history and culture in a more vivid and interesting way.</p>
+    </section>
+
+    <section class="section" id="team">
+        <h2>Team Members</h2>
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Introduction</th>
+            </tr>
+            <tr>
+                <td class="name">shiqi.Gao</td>
+                <td>2364044</td>
+                <td>It is hoped that more people will be able to learn about our country’s history, culture and objects through the Fun Museum.</td>
+            </tr>
+            <tr>
+                <td class="name">Jielin.Wang</td>
+                <td>2364423</td>
+                <td>I am a third-year student at Xi’an Jiaotong-Liverpool University, passionate about museums and digital technology. I chose the “My stories in museums” theme to bring cultural relics “alive”.</td>
+            </tr>
+            <tr>
+                <td class="name">Yi.Li</td>
+                <td>2361372</td>
+                <td>I’m a Digital Media and Technology major. I hope to show the young the charm of museums through this project.</td>
+            </tr>
+        </table>
+    </section>
+</div>
+
+</body>
+</html>
