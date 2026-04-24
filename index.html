@@ -23,7 +23,6 @@
             padding-right: 1rem;
         }
 
-        /* 顶部固定导航索引 */
         .navbar {
             position: fixed;
             top: 0;
@@ -83,7 +82,7 @@
             background: #161b22;
             border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         table th, table td {
@@ -101,99 +100,140 @@
             color: #58a6ff;
             font-weight: bold;
         }
+
+        .reference {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #adbac7;
+            padding-left: 0.5rem;
+            margin-bottom: 2rem;
+        }
     </style>
 </head>
 
 <body>
 
-<!-- 顶部索引导航 -->
 <div class="navbar">
     <a href="#team">Team Members</a>
     <a href="#background">Research Background</a>
-    <a href="#benchmark">Benchmark Analysis</a>
+    <a href="#academic">Academic Analysis</a>
+    <a href="#benchmark">Benchmark</a>
     <a href="#design">Design Concept</a>
 </div>
 
-    <h1 class="title">CPT208-A3-2 Museum AR Project</h1>
+<h1 class="title">CPT208-A3-2 Museum AR Project</h1>
 
-    <!-- 1. Team Members -->
-    <div class="section" id="team">
-        <h2>Team Members</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Student ID</th>
-                <th>Introduction</th>
-            </tr>
-            <tr>
-                <td class="name">Shiqi.Gao</td>
-                <td>2364044</td>
-                <td>It is hoped that more people will be able to learn about our country's history, culture and objects through the Fun Museum.</td>
-            </tr>
-            <tr>
-                <td class="name">Jielin.Wang</td>
-                <td>2364423</td>
-                <td>A third-year XJTLU student passionate about museums and digital technology, focusing on revitalizing cultural relics with interactive design.</td>
-            </tr>
-            <tr>
-                <td class="name">Yi.Li</td>
-                <td>2361372</td>
-                <td>Digital media major and museum enthusiast, aiming to enhance young people’s willingness to visit museums through innovative interaction.</td>
-            </tr>
-            <tr>
-                <td class="name">Kai.Xu</td>
-                <td>2361744</td>
-                <td>Digital media technology student with solid programming skills and strong interest in XR and interactive development.</td>
-            </tr>
-        </table>
+<div class="section" id="team">
+    <h2>Team Members</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Student ID</th>
+            <th>Introduction</th>
+        </tr>
+        <tr>
+            <td class="name">Shiqi.Gao</td>
+            <td>2364044</td>
+            <td>It is hoped that more people will be able to learn about our country's history, culture and objects through the Fun Museum.</td>
+        </tr>
+        <tr>
+            <td class="name">Jielin.Wang</td>
+            <td>2364423</td>
+            <td>A third-year XJTLU student passionate about museums and digital technology, focusing on revitalizing cultural relics with interactive design.</td>
+        </tr>
+        <tr>
+            <td class="name">Yi.Li</td>
+            <td>2361372</td>
+            <td>Digital media major and museum enthusiast, aiming to enhance young people’s willingness to visit museums through innovative interaction.</td>
+        </tr>
+        <tr>
+            <td class="name">Kai.Xu</td>
+            <td>2361744</td>
+            <td>Digital media technology student with solid programming skills and strong interest in XR and interactive development.</td>
+        </tr>
+    </table>
+</div>
+
+<div class="section" id="background">
+    <h2>Research Background and Design Motivation</h2>
+    <div class="box">
+        With the deep integration of digital technology and museum scenarios, AR navigation and AI interpretation have become effective ways to attract young visitors. Nevertheless, most existing museum solutions face common limitations, including homogenized content, weak interactivity, and poor lightweight experience. Traditional AR game development requires high costs and causes heavy performance consumption, while mainstream museum applications rely on single textual or audio guidance, lacking attractive interactive mechanisms.
+        This project focuses on the core pain point that modern young users generally regard museum visits as boring and passive. We design a lightweight WebAR museum system based on Unity and WebGL. By adopting AR scene recognition, intelligent AI explanation, and gamified check-in mechanics, the project delivers an immersive and low-threshold visiting experience without downloading additional applications, helping young users better understand cultural heritage and increasing long-term museum engagement.
     </div>
+</div>
 
-    <!-- 2. Research Background -->
-    <div class="section" id="background">
-        <h2>Research Background and Design Motivation</h2>
-        <div class="box">
-            With the deep integration of digital technology and museum scenarios, AR navigation and AI interpretation have become effective ways to attract young visitors. Nevertheless, most existing museum solutions face common limitations, including homogenized content, weak interactivity, and poor lightweight experience. Traditional AR game development requires high costs and causes heavy performance consumption, while mainstream museum applications rely on single textual or audio guidance, lacking attractive interactive mechanisms.
+<div class="section" id="academic">
+    <h2>Academic Paper Analysis</h2>
+    <table>
+        <tr>
+            <th>Research Topic</th>
+            <th>Key Strengths</th>
+            <th>Main Limitations</th>
+        </tr>
+        <tr>
+            <td>Generative AI & Digital Museum Experience</td>
+            <td>Optimize interactive participation, realize personalized cultural interpretation, and enrich narrative forms</td>
+            <td>Unstable content accuracy, risk of cultural misunderstanding, and weak on-site experience</td>
+        </tr>
+        <tr>
+            <td>AI Interactive Museum Exhibition</td>
+            <td>Improve visitor engagement and information receiving efficiency, enhance entertainment perception</td>
+            <td>Highly dependent on design quality, lack of scalable lightweight solutions</td>
+        </tr>
+        <tr>
+            <td>AR Gamification in Science Museums</td>
+            <td>Strengthen emotional interaction and knowledge popularization through virtual companions and game mechanisms</td>
+            <td>Small experimental scale, easy to cause experience overload and ignore cultural content</td>
+        </tr>
+        <tr>
+            <td>AR Technology for Historical Museums</td>
+            <td>Build cross-temporal cultural connection and improve overall visitor satisfaction</td>
+            <td>Strong scenario restriction, high technical threshold, poor lightweight promotion</td>
+        </tr>
+    </table>
 
-            This project focuses on the core pain point that modern young users generally regard museum visits as boring and passive. We design a lightweight WebAR museum system based on Unity and WebGL. By adopting AR scene recognition, intelligent AI explanation, and gamified check-in mechanics, the project delivers an immersive and low-threshold visiting experience without downloading additional applications, helping young users better understand cultural heritage and increasing long-term museum engagement.
-        </div>
+    <div class="reference">
+        <strong>References:</strong><br>
+        [1] X. Hao, J. Xu, and Y. Wang, "How generative AI shapes user perceived value and adoption intention in digital museum experiences," npj Heritage Sci., vol. 13, no. 1, pp. 1–17, Nov. 2025, doi: 10.1038/s40494-025-02194-9.<br>
+        [2] C.-H. Kung and P.-S. Lin, "A study on the application of artificial intelligence in interactive museum displays and visitor perception," Int. J. Organ. Innov., vol. 17, no. 2, pp. 155–167, Oct. 2024.<br>
+        [3] A. D. Baswedan and S. Tokuhisa, “The adventure in science museum: AR game featuring anthropomorphized companion to enhance learning experience in science museum,” in Companion Proceedings of the 2024 Annual Symposium on Computer-Human Interaction in Play, Oct. 2024, pp. 18–23, doi: 10.1145/3665463.3678802.<br>
+        [4] Y. Tang and Q. Zhou, “Inspired by intertemporal connections: Using AR technology to enhance visitor satisfaction in historical museums,” Tourism Manage., vol. 108, Jun. 2025, doi: 10.1016/j.tourman.2024.105096.
     </div>
+</div>
 
-    <!-- 3. Benchmark Analysis -->
-    <div class="section" id="benchmark">
-        <h2>Product Benchmark Analysis</h2>
-        <table>
-            <tr>
-                <th>Existing Product</th>
-                <th>Advantages</th>
-                <th>Limitations</th>
-            </tr>
-            <tr>
-                <td>Digital Palace Museum</td>
-                <td>Authoritative content, complete 3D exhibition resources</td>
-                <td>Large installation package, insufficient lightweight interaction</td>
-            </tr>
-            <tr>
-                <td>Cloud Dunhuang</td>
-                <td>Elegant visual style, lightweight web browsing</td>
-                <td>Lack of real-scene AR recognition and on-site guidance</td>
-            </tr>
-            <tr>
-                <td>Traditional Museum Guide App</td>
-                <td>Stable audio commentary and basic navigation</td>
-                <td>Single interaction, no gamification or social attributes</td>
-            </tr>
-        </table>
+<div class="section" id="benchmark">
+    <h2>Product Benchmark Analysis</h2>
+    <table>
+        <tr>
+            <th>Existing Product</th>
+            <th>Advantages</th>
+            <th>Limitations</th>
+        </tr>
+        <tr>
+            <td>Digital Palace Museum</td>
+            <td>Authoritative content, complete 3D exhibition resources</td>
+            <td>Large installation package, insufficient lightweight interaction</td>
+        </tr>
+        <tr>
+            <td>Cloud Dunhuang</td>
+            <td>Elegant visual style, lightweight web browsing</td>
+            <td>Lack of real-scene AR recognition and on-site guidance</td>
+        </tr>
+        <tr>
+            <td>Traditional Museum Guide App</td>
+            <td>Stable audio commentary and basic navigation</td>
+            <td>Single interaction, no gamification or social attributes</td>
+        </tr>
+    </table>
+</div>
+
+<div class="section" id="design">
+    <h2>Design Concept & Optimization</h2>
+    <div class="box">
+        In the early design stage, the team tried diverse styles including traditional Chinese aesthetics and dark-mode interfaces. After comparison, a concise and modern visual style was finally selected to adapt to dim museum lighting and AR superposition effects.
+        To reduce development pressure and improve operational efficiency, the project abandoned the high-cost solution of designing independent mini-games for each exhibit. Instead, a unified check-in and achievement system was constructed. Combined with AR real-world positioning and interactive maps, it balances development cost, user experience and long-term iteration. The overall design focuses on simplicity, accessibility and social sharing, making museum visits more interesting, relaxing and educational for young audiences.
     </div>
-
-    <!-- 4. Design Concept -->
-    <div class="section" id="design">
-        <h2>Design Concept & Optimization</h2>
-        <div class="box">
-            In the early design stage, the team tried diverse styles including traditional Chinese aesthetics and dark-mode interfaces. After comparison, a concise and modern visual style was finally selected to adapt to dim museum lighting and AR superposition effects.
-
-            To reduce development pressure and improve operational efficiency, the project abandoned the high-cost solution of designing independent mini-games for each exhibit. Instead, a unified check-in and achievement system was constructed. Combined with AR real-world positioning and interactive maps, it balances development cost, user experience and long-term iteration. The overall design focuses on simplicity, accessibility and social sharing, making museum visits more interesting, relaxing and educational for young audiences.
-        </div>
-    </div>
+</div>
 
 </body>
 </html>
