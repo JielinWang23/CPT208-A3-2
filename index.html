@@ -16,17 +16,31 @@
             background-color: #0d1117;
             color: #c9d1d9;
             line-height: 1.7;
-            padding-top: 70px; /* 给固定导航栏留位置 */
+            padding-top: 70px;
+            background-image: url('https://picsum.photos/id/137/1920/1080');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
         }
 
-        /* 固定顶部导航栏 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13,17,23,0.92);
+            z-index: -1;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             background: #161b22ee;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
             padding: 16px 20px;
             display: flex;
             justify-content: center;
@@ -47,39 +61,42 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
 
         .hero {
-            padding: 3rem 1rem;
+            padding: 5rem 1rem;
             text-align: center;
             margin-bottom: 3rem;
+            background: rgba(22,27,34,0.6);
+            border-radius: 14px;
         }
 
         .hero h1 {
-            font-size: 2.4rem;
-            color: #ffffff;
+            font-size: 3rem;
+            color: #fff;
             margin-bottom: 1rem;
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: #8b949e;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 2rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 26px;
             background: #238636;
             color: white;
-            border-radius: 6px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 500;
             transition: background 0.2s;
+            margin: 0 8px;
         }
 
         .btn:hover {
@@ -87,15 +104,24 @@
         }
 
         .section {
-            margin-bottom: 4rem;
+            background: rgba(22,27,34,0.6);
+            padding: 2.5rem;
+            border-radius: 14px;
+            margin-bottom: 3rem;
         }
 
         .section h2 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             color: #7ee787;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.6rem;
+            margin-bottom: 1.4rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid #30363d;
+        }
+
+        .section h3 {
+            font-size: 1.4rem;
+            color: #58a6ff;
+            margin: 1.6rem 0 1rem;
         }
 
         .table {
@@ -104,6 +130,7 @@
             background: #161b22;
             border-radius: 8px;
             overflow: hidden;
+            margin: 1rem 0;
         }
 
         .table th, .table td {
@@ -122,9 +149,37 @@
             font-weight: 600;
         }
 
-        @media (max-width:600px) {
-            .hero h1 { font-size: 1.8rem; }
-            .navbar { gap:14px; }
+        .conclusion {
+            background: rgba(31,139,246,0.1);
+            border-left: 4px solid #58a6ff;
+            padding: 1.2rem;
+            margin: 1.2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .screenshot {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .screenshot img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #8b949e;
+            border-top: 1px solid #30363d;
+            margin-top: 3rem;
+        }
+
+        @media (max-width:768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .btn { display: block; margin: 10px auto; }
+            .section { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -134,49 +189,110 @@
 <!-- 固定导航栏 -->
 <div class="navbar">
     <a href="#home">Home</a>
-    <a href="#about">About</a>
     <a href="#team">Team</a>
+    <a href="#research">Research</a>
+    <a href="#design">Design</a>
+    <a href="#version">Version 2.0</a>
     <a href="https://github.com/JielinWang23/CPT208-A3-2">GitHub</a>
 </div>
 
 <div class="container">
+
+    <!-- 首页 -->
     <section class="hero" id="home">
         <h1>CPT208-A3-2</h1>
-        <p>AR Museum Experience · Digital Media Technology Project</p>
-        <a href="#team" class="btn">View Team</a>
+        <p>Museum AR Interaction · Digital Media Technology Project</p>
+        <a href="#team" class="btn">Team</a>
+        <a href="#research" class="btn">Research</a>
+        <a href="#design" class="btn">Design</a>
     </section>
 
-    <section class="section" id="about">
-        <h2>About Project</h2>
-        <p>This project focuses on museum AR interaction and digital cultural presentation, allowing users to experience history and culture in a more vivid and interesting way.</p>
-    </section>
-
+    <!-- 团队 -->
     <section class="section" id="team">
-        <h2>Team Members</h2>
+        <h2>👨‍💻 Team Members</h2>
         <table class="table">
-            <tr>
-                <th>Name</th>
-                <th>Student ID</th>
-                <th>Introduction</th>
-            </tr>
-            <tr>
-                <td class="name">shiqi.Gao</td>
-                <td>2364044</td>
-                <td>It is hoped that more people will be able to learn about our country’s history, culture and objects through the Fun Museum.</td>
-            </tr>
-            <tr>
-                <td class="name">Jielin.Wang</td>
-                <td>2364423</td>
-                <td>I am a third-year student at Xi’an Jiaotong-Liverpool University, passionate about museums and digital technology. I chose the “My stories in museums” theme to bring cultural relics “alive”.</td>
-            </tr>
-            <tr>
-                <td class="name">Yi.Li</td>
-                <td>2361372</td>
-                <td>I’m a Digital Media and Technology major. I hope to show the young the charm of museums through this project.</td>
-            </tr>
+            <tr><th>Name</th><th>Student ID</th><th>Introduction</th></tr>
+            <tr><td class="name">Shiqi.Gao</td><td>2364044</td><td>It is hoped that more people will be able to learn about our country's history, culture and objects through the Fun Museum.</td></tr>
+            <tr><td class="name">Jielin.Wang</td><td>2364423</td><td>I am a third-year student at Xi'an Jiaotong-Liverpool University, passionate about museums and digital technology. I chose the "My stories in museums" theme to bring cultural relics "alive".</td></tr>
+            <tr><td class="name">Yi.Li</td><td>2361372</td><td>I'm a Digital Media and Technology major. I hope to show the young the charm of museums through this project.</td></tr>
+            <tr><td class="name">Kai.Xu</td><td>2361744</td><td>I am a student majoring in Digital Media Technology with a keen interest in XR technology and solid programming skills.</td></tr>
         </table>
     </section>
-</div>
 
+    <!-- 研究 -->
+    <section class="section" id="research">
+        <h2>🔍 User Research</h2>
+
+        <h3>👥 User Persona</h3>
+        <table class="table">
+            <tr><th>User Group</th><th>Core Pain Points</th><th>Core Needs</th></tr>
+            <tr><td>Child</td><td>Exhibits are look-only, boring experience.</td><td>Playful interaction, hands-on engagement.</td></tr>
+            <tr><td>Young Adult</td><td>Outdated design, inefficient info access.</td><td>Gamified challenges, modern interactions.</td></tr>
+        </table>
+
+        <h3>🎬 Survey Results</h3>
+        <table class="table">
+            <tr><td>Interested</td><td>28%</td><td>Minority positive</td></tr>
+            <tr><td>Not interested</td><td>72%</td><td>Most students lack interest</td></tr>
+            <tr><td>Reason</td><td>92% too boring</td><td>Lack engagement</td></tr>
+            <tr><td>Suggestion</td><td>More interactivity</td><td>Gamification & check-in</td></tr>
+        </table>
+
+        <div class="conclusion">
+            <strong>Conclusion:</strong> Over 70% young people are not interested. AR interaction and gamification will greatly improve willingness to visit.
+        </div>
+
+        <h3>🎬 Visitor Interviews</h3>
+        <table class="table">
+            <tr><th>ID</th><th>Age</th><th>Experience</th><th>Improvement</th></tr>
+            <tr><td>A</td><td>26</td><td>Boring, feels like learning</td><td>AR highlight video</td></tr>
+            <tr><td>B</td><td>22</td><td>Just looking, tired</td><td>Team gamification</td></tr>
+            <tr><td>C</td><td>20</td><td>Dim, distant</td><td>AR time travel</td></tr>
+            <tr><td>D</td><td>12</td><td>Cannot touch</td><td>Level-based game</td></tr>
+            <tr><td>E</td><td>14</td><td>Tired reading</td><td>Animated living artifacts</td></tr>
+        </table>
+    </section>
+
+    <!-- 设计 -->
+    <section class="section" id="design">
+        <h2>🎨 Design & Drafts</h2>
+
+        <h3>Draft 1</h3>
+        <div class="screenshot">
+            <img src="https://picsum.photos/1000/600" alt="Draft 1">
+        </div>
+
+        <h3>UI 1</h3>
+        <div class="screenshot">
+            <img src="https://picsum.photos/1000/600?random=1" alt="UI 1">
+        </div>
+
+        <h3>Draft 2</h3>
+        <div class="screenshot">
+            <img src="https://picsum.photos/1000/600?random=2" alt="Draft 2">
+        </div>
+    </section>
+
+    <!-- 版本 -->
+    <section class="section" id="version">
+        <h2>🚀 Version 2.0 Updates</h2>
+        <h3>1. Gamification & UX Optimization</h3>
+        <ul style="margin-left:1.4rem; margin-top:0.6rem;">
+            <li>Homepage Achievement Showcase</li>
+            <li>AR Real-world Fun Map</li>
+        </ul>
+
+        <h3>2. Cost & Efficiency Improvement</h3>
+        <ul style="margin-left:1.4rem; margin-top:0.6rem;">
+            <li>Removed high-cost per-exhibit games</li>
+            <li>Unified achievement system</li>
+        </ul>
+    </section>
+
+    <div class="footer">
+        CPT208-A3-2 Museum AR Project | GitHub Pages
+    </div>
+
+</div>
 </body>
 </html>
