@@ -167,7 +167,7 @@
         }
         .interview-content.active {
             padding: 1.5rem;
-            max-height: 2000px;
+            max-height: 3000px;
         }
         .interview-item {
             margin-bottom: 1.2rem;
@@ -187,16 +187,59 @@
         .interviewee {
             color: #adbac7;
         }
+        /* 问卷结果滑动样式 */
+        .survey-scroll {
+            margin: 1.5rem 0;
+            overflow-y: auto;
+            max-height: 400px;
+            border-radius: 10px;
+            background: #1a1f29;
+            padding: 0.5rem;
+        }
+        .survey-scroll img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+        .survey-scroll img:last-child {
+            margin-bottom: 0;
+        }
+        /* 采访照片并列样式 */
+        .interview-photos {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .interview-photos .img-item {
+            flex: 1;
+        }
+        .interview-photos img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        /* 问卷评估三张图样式 */
+        .evaluation-imgs {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .evaluation-imgs img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
     </style>
 </head>
 
 <body>
 
-<!-- 顶部导航（已新增 Deep Interview） -->
+<!-- 顶部导航：已改为 访谈调查 -->
 <div class="navbar">
     <a href="#team">Team</a>
     <a href="#background">Background</a>
-    <a href="#interview">Deep Interview</a>
+    <a href="#interview">访谈调查</a>
     <a href="#academic">Academic</a>
     <a href="#benchmark">Benchmark</a>
     <a href="#design">Design</a>
@@ -246,58 +289,112 @@
     </div>
 </div>
 
-<!-- 新增：深度访谈展示（可展开折叠） -->
+<!-- 访谈调查（折叠：问卷调查、使用前访谈、使用后访谈、问卷评估） -->
 <div class="section" id="interview">
-    <h2>Deep Interview Dialogue (Partial Interview Display)</h2>
+    <h2>Interview & Survey Research</h2>
     
-    <!-- 可展开：使用前访谈 -->
+    <!-- 1. 问卷调查 -->
+    <div class="interview-section">
+        <div class="interview-header" onclick="toggleInterview('survey')">
+            <h3>Questionnaire Survey</h3>
+            <span id="surveyIcon">+</span>
+        </div>
+        <div class="interview-content" id="survey">
+            <div class="img-wrap">
+                <img src="599a03525fac4eb413ac9f61a18aec1.png" alt="Questionnaire Content">
+                <div class="img-desc">Questionnaire Content</div>
+            </div>
+            <div class="survey-scroll">
+                <img src="76c2f8e957b46c5c3c07cdc26166b6e.png" alt="Survey Result 1">
+                <img src="f642beac7d0ea202c0f54132f7dd8a8.png" alt="Survey Result 2">
+                <img src="baf6cf75b4db492f40373b0e08aa564.png" alt="Survey Result 3">
+            </div>
+            <div class="img-desc">Survey Results (Scroll to View)</div>
+        </div>
+    </div>
+
+    <!-- 2. 使用前访谈 -->
     <div class="interview-section">
         <div class="interview-header" onclick="toggleInterview('preUse')">
-            <h3>Part 1: Preliminary Investigation (Before Using the Program)</h3>
+            <h3>Preliminary Interview (Before Use)</h3>
             <span id="preUseIcon">+</span>
         </div>
         <div class="interview-content" id="preUse">
             <div class="interview-item">
-                <h4>Interview 1: Young Person (22 years old, senior university student)</h4>
-                <div class="interviewer">Interviewer: Hi, thank you for participating in this interview. Could you share your recent experience of visiting a museum? How did you feel about it?</div>
-                <div class="interviewee">Interviewee: Sure. Last month, my roommate and I went to a local museum. To be honest, it was really boring. Most of the exhibits were hidden behind glass, with lengthy and boring textual descriptions. I couldn't understand most of the technical terms and there was no interesting way to learn about them. We walked for 30 minutes and left early because we felt we were just wasting time.</div>
-                <div class="interviewer">Interviewer: What bothered you the most during the visit?</div>
-                <div class="interviewee">Interviewee: There were two things. First, the navigation was very bad. The museum's map was confusing and we spent a long time looking for the exhibits we wanted to see. Secondly, there was a lack of interaction. It was just "watch and read" - no games, no feedback, no anything that made me feel involved. I preferred the interactive experience on social media or in mobile games.</div>
-                <div class="interviewer">Interviewer: If there was an AR mini-program that allowed you to sign in at the exhibition site, get an artificial intelligence explanation, and navigate through AR, would you be willing to try it?</div>
-                <div class="interviewee">Interviewee: Of course! This sounds much better. I don't like downloading apps, so a mini-program would be perfect. Augmented reality navigation could solve the direction problem, and the sign-in activity would make the visit more interesting. I think this would make the museum no longer be a "learning" place but more of a "play" place.</div>
+                <h4>Interview 1: Young Person (22, senior)</h4>
+                <div class="interviewer">Interviewer: Hi, thank you for participating... How did you feel about it?</div>
+                <div class="interviewee">Interviewee: Sure. Last month... wasting time.</div>
+                <div class="interviewer">Interviewer: What bothered you the most?</div>
+                <div class="interviewee">Interviewee: Navigation bad... mobile games.</div>
+                <div class="interviewer">Interviewer: If there was an AR mini-program... try it?</div>
+                <div class="interviewee">Interviewee: Of course! ... "play" place.</div>
             </div>
             <div class="interview-item">
-                <h4>Interview 2: Young Adult (20 years old, sophomore)</h4>
-                <div class="interviewer">Interviewer: Hello! Could you talk about your attitude towards visiting a museum? Do you go often?</div>
-                <div class="interviewee">Interviewee: I rarely go - maybe once a year, only when my family asks me to. I think museums are really boring. The exhibits are outdated, far removed from my daily life, and the explanations are too academic. I can't relate to them at all. I'd rather stay at home and watch videos or play games.</div>
-                <div class="interviewer">Interviewer: What kind of changes would make you more willing to visit a museum?</div>
-                <div class="interviewee">Interviewee: I hope there is something interactive and easy to understand. For example, if I could scan an exhibit with my phone, I could see a short augmented reality video or get a simple explanation, that would be great. Additionally, some interesting activities, such as collecting badges or completing small tasks, could also motivate me to explore more content. I don't want to feel like I'm receiving a lesson - I'd like to play while learning.</div>
-                <div class="interviewer">Interviewer: What do you think of a mini-program that includes interactive games and allows me to collect badges at different museums?</div>
-                <div class="interviewee">Interviewee: This is really great! The mini-program sounds very convenient. And it sounds like you could collect badges at different museums and visit them. I really like this model and even would try it with my friends.</div>
+                <h4>Interview 2: Young Adult (20, sophomore)</h4>
+                <div class="interviewer">Interviewer: Hello! ... go often?</div>
+                <div class="interviewee">Interviewee: I rarely go... play games.</div>
+                <div class="interviewer">Interviewer: What changes... visit a museum?</div>
+                <div class="interviewee">Interviewee: I hope... play while learning.</div>
+                <div class="interviewer">Interviewer: What do you think... museums?</div>
+                <div class="interviewee">Interviewee: This is really great... friends.</div>
+            </div>
+
+            <!-- 两张采访照片 并列 -->
+            <div class="interview-photos">
+                <div class="img-item">
+                    <img src="9eb8df2582d9902d4ffed9f4d0454cf.jpg" alt="Interview Scene 1">
+                </div>
+                <div class="img-item">
+                    <img src="8a039e997ca166ffc1e8f873cb025d7.jpg" alt="Interview Scene 2">
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 可展开：使用后访谈 -->
+    <!-- 3. 使用后访谈 -->
     <div class="interview-section">
         <div class="interview-header" onclick="toggleInterview('postUse')">
-            <h3>Part 2: After Using the Web AR Program</h3>
+            <h3>Post-Use Interview (After Using Program)</h3>
             <span id="postUseIcon">+</span>
         </div>
         <div class="interview-content" id="postUse">
             <div class="interview-item">
-                <h4>Interview 1: Young Person (22 years old, senior university student)</h4>
-                <div class="interviewer">Interviewer: We meet again! You just used our Web AR Museum Registration Mini-Program during your visit. Could you share your overall experience?</div>
-                <div class="interviewee">Interviewee: It was amazing - much better than my last visit to the museum! First, the AR navigation was very helpful. I opened this program in the browser and the virtual arrows guided me directly to the registration area. I didn't get lost at all, which saved me a lot of time. Secondly, the sign-in system was very interesting. Every time I scanned an exhibit, I would unlock a badge, and this felt like completing a game task. It made me want to go to all the sign-in points.</div>
-                <div class="interviewer">Interviewer: What do you think of the AI explanation function?</div>
-                <div class="interviewee">Interviewee: It was perfect for me. The explanation is concise, easy to understand, and not overly academic - I can easily grasp the background of each exhibit. The voice narration is clear, so I don't have to keep staring at the phone screen. I also asked a few questions about the exhibits, and the artificial intelligence gave me quick and useful answers. This made the exhibits feel more "vibrant".</div>
-                <div class="interviewer">Interviewer: Are there any areas we can improve, or would you recommend this project to others?</div>
-                <div class="interviewee">Interviewee: I definitely would recommend it to my friends! But unfortunately, I didn't see the small games mentioned earlier in it. I believe that if we could add small games to the key exhibits, it would definitely be more interesting. Overall, it solved all the problems I had before - navigation, boredom, and the difficulty of understanding the exhibits. This made museum visits fun and meaningful.</div>
+                <h4>Interview 1: Young Person (22, senior)</h4>
+                <div class="interviewer">Interviewer: We meet again!... experience?</div>
+                <div class="interviewee">Interviewee: It was amazing... sign-in points.</div>
+                <div class="interviewer">Interviewer: What do you think... function?</div>
+                <div class="interviewee">Interviewee: It was perfect... "vibrant".</div>
+                <div class="interviewer">Interviewer: Any improvements... others?</div>
+                <div class="interviewee">Interviewee: I definitely would... meaningful.</div>
             </div>
             <div class="interview-item">
-                <h4>Interview 2: Young Adults (20 years old, a sophomore student)</h4>
-                <div class="interviewer">Interviewer: Hello! How was your experience using our mini-program during the museum visit?</div>
-                <div class="interviewee">Interviewee: I was truly astonished - this completely changed my view of the museum! I originally thought it would be very complicated, but in fact, it was very simple to use. I just needed to open the link in the browser and didn't need to download any applications. This was really great. The AR check-in was also very interesting: I scanned each exhibit, unlocked badges, and even took photos. The only small suggestion is to add more hidden check-in points to make it more challenging.</div>
+                <h4>Interview 2: Young Adult (20, sophomore)</h4>
+                <div class="interviewer">Interviewer: Hello! ... visit?</div>
+                <div class="interviewee">Interviewee: I was truly astonished... challenging.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 问卷评估 SUS MES UEQ-S -->
+    <div class="interview-section">
+        <div class="interview-header" onclick="toggleInterview('evaluation')">
+            <h3>System Evaluation (SUS, MES, UEQ-S)</h3>
+            <span id="evaluationIcon">+</span>
+        </div>
+        <div class="interview-content" id="evaluation">
+            <div class="evaluation-imgs">
+                <div class="img-wrap">
+                    <img src="0b7b13593270fcfcfa1b02e46605c41.jpg" alt="SUS Evaluation">
+                    <div class="img-desc">SUS (System Usability Scale)</div>
+                </div>
+                <div class="img-wrap">
+                    <img src="912bf5f096c16e18586f8362a036715.jpg" alt="MES Evaluation">
+                    <div class="img-desc">MES (Museum Experience Scale)</div>
+                </div>
+                <div class="img-wrap">
+                    <img src="fbc4528b043d7cf8503361ae08cd161.jpg" alt="UEQ-S Evaluation">
+                    <div class="img-desc">UEQ-S (User Experience Questionnaire)</div>
+                </div>
             </div>
         </div>
     </div>
@@ -470,7 +567,6 @@
 
 </div>
 
-<!-- 可展开折叠JS脚本 -->
 <script>
 function toggleInterview(id) {
     const content = document.getElementById(id);
