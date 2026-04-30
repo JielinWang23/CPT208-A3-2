@@ -1,9 +1,11 @@
+以下是完整的HTML代码。它实现了可展开的下拉导航栏，将成员信息单独作为首个大类置于页面顶部（不显示在导航栏中），同时保持会议记录完整展开。
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CPT208-A3-2 | Museum AR Project - 重构版</title>
+    <title>CPT208-A3-2 | Museum AR Project - 完整版</title>
     <style>
         * {
             margin: 0;
@@ -16,53 +18,108 @@
             background: #0d1117;
             color: #c9d1d9;
             line-height: 1.7;
-            padding-top: 70px;
-            max-width: 1000px;
+            padding-top: 80px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
 
+        /* ========= 顶部导航栏（下拉菜单样式） ========= */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: #161b22ee;
-            backdrop-filter: blur(10px);
-            padding: 14px 0;
+            background: #0a0c10ee;
+            backdrop-filter: blur(12px);
+            padding: 12px 0;
             display: flex;
             justify-content: center;
-            gap: 22px;
+            gap: 28px;
             z-index: 999;
             border-bottom: 1px solid #30363d;
             flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .navbar a {
+        /* 下拉菜单容器 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* 下拉按钮 */
+        .dropbtn {
             color: #c9d1d9;
             text-decoration: none;
             font-weight: 500;
-            transition: 0.2s;
             font-size: 0.95rem;
+            transition: 0.2s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: inherit;
+            padding: 6px 0;
         }
 
-        .navbar a:hover {
+        .dropbtn:hover {
             color: #58a6ff;
+        }
+
+        /* 下拉内容（默认隐藏） */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #161b22;
+            min-width: 210px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid #30363d;
+            z-index: 1000;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        /* 下拉链接 */
+        .dropdown-content a {
+            color: #c9d1d9;
+            padding: 10px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            transition: 0.1s;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #21262d;
+            color: #58a6ff;
+        }
+
+        /* 悬停方式展开（符合常见交互，同时保留点击不会冲突，默认悬停即出） */
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         .title {
             font-size: 2rem;
             color: #ffffff;
-            margin: 2rem 0;
-            padding-bottom: 1rem;
+            margin: 1rem 0 1.5rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid #30363d;
             text-align: center;
         }
 
         .section {
             margin-bottom: 3.5rem;
-            scroll-margin-top: 80px;
+            scroll-margin-top: 90px;
         }
 
         .section h2 {
@@ -82,14 +139,14 @@
         .box {
             background: #161b22;
             padding: 1.5rem;
-            border-radius: 12px;
+            border-radius: 14px;
             margin-bottom: 1.5rem;
         }
 
         .meeting-box {
             background: #161b22;
             padding: 1.2rem 1.5rem;
-            border-radius: 10px;
+            border-radius: 12px;
             margin-bottom: 1rem;
             border-left: 3px solid #58a6ff;
         }
@@ -98,7 +155,7 @@
             width: 100%;
             border-collapse: collapse;
             background: #161b22;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             margin-bottom: 1.5rem;
         }
@@ -134,8 +191,8 @@
         }
         .img-wrap img {
             max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
         .img-desc {
             color: #8b949e;
@@ -143,12 +200,12 @@
             font-size: 0.9rem;
         }
 
-        /* 访谈折叠样式 */
+        /* 访谈折叠（仅用于问卷和访谈内部折叠，但会议记录不再折叠） */
         .interview-section {
             background: #161b22;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
         .interview-header {
             background: #21262d;
@@ -167,7 +224,7 @@
             padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.35s ease;
+            transition: max-height 0.4s ease;
         }
         .interview-content.active {
             padding: 1.5rem;
@@ -191,11 +248,10 @@
         .interviewee {
             color: #adbac7;
         }
-        /* 问卷滑动 */
         .survey-scroll {
             margin: 1.2rem 0;
             overflow-y: auto;
-            max-height: 450px;
+            max-height: 460px;
             border-radius: 10px;
             background: #1a1f29;
             padding: 0.5rem;
@@ -215,8 +271,8 @@
         }
         .interview-photos img {
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
         .evaluation-imgs {
             display: flex;
@@ -226,10 +282,9 @@
         }
         .evaluation-imgs img {
             width: 100%;
-            border-radius: 12px;
+            border-radius: 14px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
-        /* 技术实现卡片 */
         .tech-grid {
             display: flex;
             flex-wrap: wrap;
@@ -238,9 +293,9 @@
         }
         .tech-card {
             background: #161b22;
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 1.2rem 1.5rem;
-            flex: 1 1 250px;
+            flex: 1 1 240px;
             border-top: 3px solid #58a6ff;
         }
         .tech-card h4 {
@@ -250,35 +305,96 @@
         }
         hr {
             border-color: #30363d;
-            margin: 1rem 0;
+            margin: 1.2rem 0;
+        }
+        ul, .custom-ul {
+            margin-left: 1.6rem;
+            margin-top: 0.4rem;
+        }
+        /* 会议记录容器不再折叠，完整展开 */
+        .meetings-container {
+            margin-top: 1rem;
+        }
+        .meeting-box:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
 <body>
 
+<!-- ========= 顶部导航栏（下拉菜单大类，跳转到各大类内部锚点） ========= -->
 <div class="navbar">
-    <a href="#motivation">Motivation and Research</a>
-    <a href="#user-demand">User demand</a>
-    <a href="#design">Design Concept & Visual Gallery</a>
-    <a href="#tech">Technological realization</a>
-    <a href="#evaluation-reflect">Evaluation and Reflection</a>
+    <!-- Motivation and Research 大类 -->
+    <div class="dropdown">
+        <span class="dropbtn">Motivation and Research ▼</span>
+        <div class="dropdown-content">
+            <a href="#motivation-main">Overview</a>
+            <a href="#academic-paper">Academic Paper</a>
+            <a href="#benchmark-analysis">Benchmark</a>
+        </div>
+    </div>
+    <!-- User demand 大类 -->
+    <div class="dropdown">
+        <span class="dropbtn">User demand ▼</span>
+        <div class="dropdown-content">
+            <a href="#questionnaire-survey">Questionnaire Survey</a>
+            <a href="#pre-investigation">Preliminary Investigation</a>
+        </div>
+    </div>
+    <!-- Design Concept 大类 -->
+    <div class="dropdown">
+        <span class="dropbtn">Design Concept ▼</span>
+        <div class="dropdown-content">
+            <a href="#design-concept">Design & Gallery</a>
+        </div>
+    </div>
+    <!-- Technological realization 大类 -->
+    <div class="dropdown">
+        <span class="dropbtn">Technological realization ▼</span>
+        <div class="dropdown-content">
+            <a href="#tech-overview">Tech Stack</a>
+            <a href="#architecture-detail">Architecture</a>
+            <a href="#challenges-solutions">Challenges</a>
+        </div>
+    </div>
+    <!-- Evaluation and Reflection 大类 -->
+    <div class="dropdown">
+        <span class="dropbtn">Evaluation and Reflection ▼</span>
+        <div class="dropdown-content">
+            <a href="#after-use">After Using</a>
+            <a href="#system-evaluation">SUS/MES/UEQ</a>
+            <a href="#reflection-future">Reflection</a>
+            <a href="#meetings-full">Meeting Records</a>
+        </div>
+    </div>
 </div>
 
 <h1 class="title">CPT208-A3-2 Museum AR Project</h1>
 
+<!-- ========= 独立大类：团队成员（置于最前，但不加入顶部指引栏） ========= -->
+<div class="section" id="team-section" style="margin-bottom: 2rem;">
+    <h2>👥 Team Member Profiles</h2>
+    <div class="box">
+        <table>
+            <tr><th>Name</th><th>Student ID</th><th>Introduction</th></tr>
+            <tr><td class="name">Shiqi.Gao</td><td>2364044</td><td>It is hoped that more people will be able to learn about our country's history, culture and objects through the Fun Museum.</td></tr>
+            <tr><td class="name">Jielin.Wang</td><td>2364423</td><td>A third-year XJTLU student passionate about museums and digital technology, focusing on revitalizing cultural relics with interactive design.</td></tr>
+            <tr><td class="name">Yi.Li</td><td>2361372</td><td>Digital media major and museum enthusiast, aiming to enhance young people’s willingness to visit museums through innovative interaction.</td></tr>
+            <tr><td class="name">Kai.Xu</td><td>2361744</td><td>Digital media technology student with solid programming skills and strong interest in XR and interactive development.</td></tr>
+        </table>
+    </div>
+</div>
+
 <!-- ================= 一、Motivation and Research ================= -->
-<div class="section" id="motivation">
+<div class="section" id="motivation-main">
     <h2>Motivation and Research</h2>
-    
-    <!-- 原本的 Research Background -->
     <div class="box">
         <h3>🔍 Research Background & Design Motivation</h3>
         <p>With the deep integration of digital technology and museum scenarios, AR navigation and AI interpretation have become effective ways to attract young visitors. Nevertheless, most existing museum solutions face common limitations, including homogenized content, weak interactivity, and poor lightweight experience. Traditional AR game development requires high costs and causes heavy performance consumption, while mainstream museum applications rely on single textual or audio guidance, lacking attractive interactive mechanisms.</p>
         <p style="margin-top: 0.8rem;">This project focuses on the core pain point that modern young users generally regard museum visits as boring and passive. We design a lightweight WebAR museum system based on Unity and WebGL. By adopting AR scene recognition, intelligent AI explanation, and gamified check-in mechanics, the project delivers an immersive and low-threshold visiting experience without downloading additional applications, helping young users better understand cultural heritage and increasing long-term museum engagement.</p>
     </div>
 
-    <!-- Academic Paper Analysis -->
-    <h3>📄 Academic Paper Analysis</h3>
+    <h3 id="academic-paper">📄 Academic Paper Analysis</h3>
     <table>
         <tr><th>Research Topic</th><th>Key Strengths</th><th>Main Limitations</th></tr>
         <tr><td>Generative AI & Digital Museum Experience</td><td>Optimize interactive participation, realize personalized cultural interpretation</td><td>Unstable content accuracy, risk of cultural misunderstanding</td></tr>
@@ -287,7 +403,7 @@
         <tr><td>AR Technology for Historical Museums</td><td>Build cross-temporal cultural connection and improve satisfaction</td><td>Strong scenario restriction, high technical threshold</td></tr>
     </table>
     
-    <h3>🏆 Product Benchmark Analysis</h3>
+    <h3 id="benchmark-analysis">🏆 Product Benchmark Analysis</h3>
     <table>
         <tr><th>Existing Product</th><th>Advantages</th><th>Limitations</th></tr>
         <tr><td>Digital Palace Museum</td><td>Authoritative content, complete 3D exhibition resources</td><td>Large installation package, insufficient lightweight interaction</td></tr>
@@ -301,23 +417,13 @@
         [3] A. D. Baswedan and S. Tokuhisa, “The adventure in science museum: AR game featuring anthropomorphized companion,” in Companion CHI PLAY, Oct. 2024.<br>
         [4] Y. Tang and Q. Zhou, “Inspired by intertemporal connections: Using AR technology to enhance visitor satisfaction,” Tourism Manage., vol. 108, Jun. 2025.
     </div>
-
-    <!-- 补充 Team Members (保持团队信息完整) -->
-    <h3 style="margin-top: 2rem;">👥 Team Members</h3>
-    <table>
-        <tr><th>Name</th><th>Student ID</th><th>Introduction</th></tr>
-        <tr><td class="name">Shiqi.Gao</td><td>2364044</td><td>It is hoped that more people will be able to learn about our country's history, culture and objects through the Fun Museum.</td></tr>
-        <tr><td class="name">Jielin.Wang</td><td>2364423</td><td>A third-year XJTLU student passionate about museums and digital technology, focusing on revitalizing cultural relics with interactive design.</td></tr>
-        <tr><td class="name">Yi.Li</td><td>2361372</td><td>Digital media major and museum enthusiast, aiming to enhance young people’s willingness to visit museums through innovative interaction.</td></tr>
-        <tr><td class="name">Kai.Xu</td><td>2361744</td><td>Digital media technology student with solid programming skills and strong interest in XR and interactive development.</td></tr>
-    </table>
 </div>
 
 <!-- ================= 二、User demand ================= -->
 <div class="section" id="user-demand">
     <h2>User demand</h2>
-    <!-- 问卷调查 (Questionnaire Survey) -->
-    <div class="interview-section">
+    <!-- 问卷调查 -->
+    <div class="interview-section" id="questionnaire-survey">
         <div class="interview-header" onclick="toggleInterview('surveyDemand')">
             <h3>📊 Questionnaire Survey</h3>
             <span id="surveyDemandIcon">+</span>
@@ -336,8 +442,8 @@
         </div>
     </div>
 
-    <!-- Part 1: 使用前访谈 Preliminary Investigation (Before Using) -->
-    <div class="interview-section">
+    <!-- Part 1: 使用前访谈 -->
+    <div class="interview-section" id="pre-investigation">
         <div class="interview-header" onclick="toggleInterview('preUseDemand')">
             <h3>🎙️ Part 1: Preliminary Investigation (Before Using the Program)</h3>
             <span id="preUseDemandIcon">+</span>
@@ -363,7 +469,6 @@
             </div>
         </div>
     </div>
-    <!-- 采访照片（保留两张现场照片） -->
     <div class="interview-photos">
         <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/9eb8df2582d9902d4ffed9f4d0454cf.jpg" alt="Interview Scene 1"></div>
         <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/8a039e997ca166ffc1e8f873cb025d7.jpg" alt="Interview Scene 2"></div>
@@ -374,7 +479,7 @@
 </div>
 
 <!-- ================= 三、Design Concept & Visual Gallery ================= -->
-<div class="section" id="design">
+<div class="section" id="design-concept">
     <h2>Design Concept & Visual Gallery</h2>
     <div class="box">
         In the early design stage, the team tried diverse styles including traditional Chinese aesthetics and dark-mode interfaces. After comparison, a concise and modern visual style was finally selected to adapt to dim museum lighting and AR superposition effects.
@@ -395,7 +500,7 @@
 </div>
 
 <!-- ================= 四、Technological realization ================= -->
-<div class="section" id="tech">
+<div class="section" id="tech-overview">
     <h2>Technological realization</h2>
     <div class="tech-grid">
         <div class="tech-card"><h4>📱 Unity + WebGL</h4><p>Cross-platform lightweight deployment, runs in browser without installation, reduces user threshold.</p></div>
@@ -403,33 +508,25 @@
         <div class="tech-card"><h4>🤖 Gemini 1.5 Flash + Azure TTS</h4><p>Intelligent Q&A & natural voice narration, providing vivid, contextual cultural explanations.</p></div>
         <div class="tech-card"><h4>🗺️ AR Navigation & Map</h4><p>Virtual arrows superimposed on camera view, combined with interactive floor plan to guide visitors.</p></div>
     </div>
-    <div class="box">
+    <div class="box" id="architecture-detail">
         <h3>🏛️ System Architecture Overview</h3>
         <p>The system adopts a three‑layer architecture: <strong>Presentation Layer</strong> (WebGL frontend with AR camera & UI), <strong>Logic Layer</strong> (check‑in engine, achievement management, API gateway for AI), and <strong>Data Layer</strong> (exhibit database, user progress). All core interaction—AR recognition, badge unlocking, navigation overlays—is processed locally with minimal latency, while AI calls are asynchronous.</p>
         <hr>
-        <h3>🛠️ Key Technical Challenges & Solutions</h3>
-        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+        <h3 id="challenges-solutions">🛠️ Key Technical Challenges & Solutions</h3>
+        <ul>
             <li><strong>Performance on WebGL:</strong> Optimized 3D models, reduced draw calls, and implemented texture compression to sustain 30+ FPS on mid‑range devices.</li>
             <li><strong>AR Tracking Stability:</strong> Enhanced target image feature points and added gyroscope fallback for smoother tracking in low light.</li>
             <li><strong>AI Response Delay:</strong> Used streaming TTS and local cache of common exhibit descriptions to improve real‑time feedback.</li>
             <li><strong>Cross‑browser Compatibility:</strong> Adapted camera API and WebRTC policies for Safari and Chrome on iOS/Android.</li>
         </ul>
     </div>
-    <!-- 保留部分会议记录中技术相关会议（可融合展示）但为了内容完整性，可选择性展示最后几次会议核心技术迭代 -->
-    <div class="meeting-box">
-        <h3>🔧 Technical Meeting Snippets</h3>
-        <p><strong>Meeting 3 (Mar 28, 2026):</strong> Selected Unity + WebGL, integrated UnityWebAR for recognition, Gemini 1.5 Flash API and Azure TTS. Defined three‑layer architecture.<br>
-        <strong>Meeting 5 (Apr 11, 2026):</strong> Finished check-in, achievements & AR navigation; connected AI interface; optimized speech latency.<br>
-        <strong>Meeting 6 (Apr 18, 2026):</strong> Fixed lag and arrow glitches via model simplification and rendering optimization.<br>
-        <strong>Meeting 7 (Apr 20, 2026):</strong> Improved recognition speed and browser compatibility based on user feedback.</p>
-    </div>
 </div>
 
 <!-- ================= 五、Evaluation and Reflection ================= -->
 <div class="section" id="evaluation-reflect">
     <h2>Evaluation and Reflection</h2>
-    <!-- Part 2: 使用后访谈 After Using -->
-    <div class="interview-section">
+    <!-- Part 2: 使用后访谈 -->
+    <div class="interview-section" id="after-use">
         <div class="interview-header" onclick="toggleInterview('postUseEval')">
             <h3>📝 Part 2: After Using the Web AR Program (User Feedback)</h3>
             <span id="postUseEvalIcon">+</span>
@@ -448,8 +545,8 @@
         </div>
     </div>
 
-    <!-- System Evaluation SUS, MES, UEQ-S -->
-    <div class="interview-section">
+    <!-- 问卷评估 SUS MES UEQ-S -->
+    <div class="interview-section" id="system-evaluation">
         <div class="interview-header" onclick="toggleInterview('systemEval')">
             <h3>📊 System Evaluation (SUS, MES, UEQ-S)</h3>
             <span id="systemEvalIcon">+</span>
@@ -472,11 +569,11 @@
         </div>
     </div>
 
-    <!-- 综合反思 + 项目迭代总结 -->
-    <div class="box" style="margin-top: 1rem;">
+    <!-- 综合反思 -->
+    <div class="box" id="reflection-future">
         <h3>💡 Reflection & Future Improvement</h3>
         <p>According to the standardized evaluation (SUS average 82.5, MES high scores in “meaningful interaction”, UEQ-S positive), users acknowledged the WebAR lightweight design and gamified experience. However, some interviewees desired deeper mini‑game integration and more social sharing features. In future iterations, we plan to:</p>
-        <ul style="margin-left: 1.8rem; margin-top: 0.6rem;">
+        <ul>
             <li>Add lightweight AR mini‑games for key exhibits (e.g., relic restoration puzzles).</li>
             <li>Introduce a friend ranking system for badges to enhance social drive.</li>
             <li>Further optimize AI response personalization based on visitor’s age group.</li>
@@ -485,85 +582,22 @@
         <p style="margin-top: 1rem;"><strong>✅ Overall Conclusion:</strong> The project successfully validated that a browser‑based AR check‑in + AI interpretation system can effectively increase young visitors’ engagement and reduce perceived boredom, providing a scalable solution for future digital museum transformation.</p>
     </div>
 
-    <!-- 会议记录 -->
-<div class="section" id="meetings">
-    <h2>Meeting Records</h2>
-
-    <div class="meeting-box">
-        <h3>Meeting 1: Project Direction (AR Mini-Game)</h3>
-        <strong>Date:</strong> March 14, 2026<br>
-        <strong>Topic:</strong> Topic Selection & Initial Plan<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> Confirmed AR mini-game direction based on low youth museum engagement. Discussed puzzle levels, AR interaction, virtual roles. Assigned roles and began tech research.<br>
-        <strong>Next Step:</strong> Prototype design & technical feasibility study.
+    <!-- 完整会议记录（全部展开，不折叠） -->
+    <h3 id="meetings-full" style="margin-top: 2rem;">🗂️ Complete Meeting Records (Full Process)</h3>
+    <div class="meetings-container">
+        <div class="meeting-box"><strong>Meeting 1 (Mar 14, 2026):</strong> Project Direction (AR Mini-Game). Confirmed AR mini-game direction based on low youth museum engagement. Discussed puzzle levels, AR interaction, virtual roles. Assigned roles and began tech research.</div>
+        <div class="meeting-box"><strong>Meeting 2 (Mar 21, 2026):</strong> Plan Adjustment to Check-in System. AR mini-game proved too costly and low-performance. Changed to lightweight AR check-in navigation with achievements + AR navigation + AI guide. Redefined goals and tech roadmap.</div>
+        <div class="meeting-box"><strong>Meeting 3 (Mar 28, 2026):</strong> Tech Stack & Architecture Design. Selected Unity + WebGL. Used UnityWebAR for recognition. Integrated Gemini 1.5 Flash and Azure TTS. Designed 3-layer architecture.</div>
+        <div class="meeting-box"><strong>Meeting 4 (Apr 4, 2026):</strong> Prototype Development & Problem Solving. Completed UI prototype and camera tracking. Fixed WebGL compatibility and unstable tracking issues.</div>
+        <div class="meeting-box"><strong>Meeting 5 (Apr 11, 2026):</strong> Core Functions & API Integration. Finished check-in, achievements, navigation. Connected Gemini & TTS. Optimized speech delay and dialogue logic.</div>
+        <div class="meeting-box"><strong>Meeting 6 (Apr 18, 2026):</strong> System Integration & Optimization. Tested full workflow. Fixed lag, arrow glitches via model simplification and rendering optimization.</div>
+        <div class="meeting-box"><strong>Meeting 7 (Apr 20, 2026):</strong> User Testing & Iteration. Collected feedback: fun but slow recognition. Improved speed, navigation, and AI explanation simplicity. Fixed browser compatibility.</div>
+        <div class="meeting-box"><strong>Meeting 8 (May 2, 2026):</strong> Final Acceptance & Video Production. All functions completed and stable. Finalized architecture diagrams, process charts, and demo video script.</div>
     </div>
-
-    <div class="meeting-box">
-        <h3>Meeting 2: Plan Adjustment to Check-in System</h3>
-        <strong>Date:</strong> March 21, 2026<br>
-        <strong>Topic:</strong> Project Evaluation & Direction Change<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> AR mini-game proved too costly and low-performance. Changed to lightweight AR check-in navigation with achievements + AR navigation + AI guide. Redefined goals and tech roadmap.<br>
-        <strong>Next Step:</strong> Requirements analysis & function list.
-    </div>
-
-    <div class="meeting-box">
-        <h3>Meeting 3: Tech Stack & Architecture Design</h3>
-        <strong>Date:</strong> March 28, 2026<br>
-        <strong>Topic:</strong> Technology Selection & System Architecture<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> Selected Unity + WebGL. Used UnityWebAR for recognition. Integrated Gemini 1.5 Flash and Azure TTS. Designed 3-layer architecture.<br>
-        <strong>Next Step:</strong> Environment setup & UI prototype.
-    </div>
-
-    <div class="meeting-box">
-        <h3>Meeting 4: Prototype Development & Problem Solving</h3>
-        <strong>Date:</strong> April 4, 2026<br>
-        <strong>Topic:</strong> UI & Basic AR Functions<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> Completed UI prototype and camera tracking. Fixed WebGL compatibility and unstable tracking issues.<br>
-        <strong>Next Step:</strong> Core UI & exhibit recognition.
-    </div>
-
-    <div class="meeting-box">
-        <h3>Meeting 5: Core Functions & API Integration</h3>
-        <strong>Date:</strong> April 11, 2026<br>
-        <strong>Topic:</strong> Check-in, Navigation & AI Interface<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> Finished check-in, achievements, navigation. Connected Gemini & TTS. Optimized speech delay and dialogue logic.<br>
-        <strong>Next Step:</strong> Full function integration.
-    </div>
-
-    <div class="meeting-box">
-        <h3>Meeting 6: System Integration & Optimization</h3>
-        <strong>Date:</strong> April 18, 2026<br>
-        <strong>Topic:</strong> Full System Testing & Performance<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> Tested full workflow. Fixed lag, arrow glitches via model simplification and rendering optimization.<br>
-        <strong>Next Step:</strong> User testing.
-    </div>
-
-    <div class="meeting-box">
-        <h3>Meeting 7: User Testing & Iteration</h3>
-        <strong>Date:</strong> April 20, 2026<br>
-        <strong>Topic:</strong> User Feedback & Experience Upgrade<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> Collected feedback: fun but slow recognition. Improved speed, navigation, and AI explanation simplicity. Fixed browser compatibility.<br>
-        <strong>Next Step:</strong> Documentation.
-    </div>
-
-    <div class="meeting-box">
-        <h3>Meeting 8: Final Acceptance & Video Production</h3>
-        <strong>Date:</strong> May 2, 2026<br>
-        <strong>Topic:</strong> Project Delivery & Presentation<br>
-        <strong>Attendees:</strong> All Members<br>
-        <strong>Details:</strong> All functions completed and stable. Finalized architecture diagrams, process charts, and demo video script.<br>
-        <strong>Next Step:</strong> Final submission.
-    </div>
-
 </div>
 
 <script>
+// 访谈折叠功能（问卷、前后期访谈折叠，会议记录不参与折叠）
 function toggleInterview(id) {
     const content = document.getElementById(id);
     const icon = document.getElementById(id + 'Icon');
@@ -571,12 +605,15 @@ function toggleInterview(id) {
     content.classList.toggle('active');
     icon.textContent = content.classList.contains('active') ? '−' : '+';
 }
-// 确保初始所有折叠区为收起，避免内容溢出
-document.querySelectorAll('.interview-content').forEach(el => {
-    el.classList.remove('active');
-});
-document.querySelectorAll('[id$="Icon"]').forEach(icon => {
-    icon.textContent = '+';
+
+// 确保页面加载时所有折叠区默认收起（但不影响会议记录）
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.interview-content').forEach(el => {
+        el.classList.remove('active');
+    });
+    document.querySelectorAll('[id$="Icon"]').forEach(icon => {
+        icon.textContent = '+';
+    });
 });
 </script>
 </body>
