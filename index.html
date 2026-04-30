@@ -519,17 +519,7 @@
         </div>
     </div>
 
-    <!-- 2. Low-fidelity prototype (新增小类) -->
-    <div id="low-fidelity">
-        <h3>📱 Low-fidelity Prototype</h3>
-        <div class="box" style="text-align: center;">
-            <p style="margin-bottom: 1rem;">Explore our interactive low-fidelity prototype on Figma:</p>
-            <a class="btn-link" href="https://www.figma.com/design/SfrZScwq6pV2UJyYwWP2GI/ARtifact-?node-id=12-372&m=dev&t=XJ6HWqPuiZvnh2dO-1" target="_blank" rel="noopener noreferrer">🔗 Open Figma Prototype (ARtifact)</a>
-            <p class="legacy-notes" style="margin-top: 1rem;">The prototype demonstrates core user flows: AR check-in, navigation overlay, badge collection and AI explanation interface.</p>
-        </div>
-    </div>
-
-    <!-- 3. Questionnaire Survey -->
+    <!-- 2. Questionnaire Survey -->
     <div class="interview-section" id="questionnaire-survey">
         <div class="interview-header" onclick="toggleInterview('surveyDemand')">
             <h3>📊 Questionnaire Survey</h3>
@@ -545,27 +535,48 @@
         </div>
     </div>
 
-    <!-- 4. Preliminary Investigation -->
-    <div class="interview-section" id="pre-investigation">
-        <div class="interview-header" onclick="toggleInterview('preUseDemand')">
-            <h3>🎙️ Preliminary Investigation (Before Using)</h3>
-            <span id="preUseDemandIcon">+</span>
+    <!-- 3. Preliminary Investigation -->
+     <div class="interview-section">
+        <div class="interview-header" onclick="toggleInterview('preUse')">
+            <h3>Part 1: Preliminary Investigation (Before Using the Program)</h3>
+            <span id="preUseIcon">+</span>
         </div>
-        <div class="interview-content" id="preUseDemand">
-            <div class="interview-item"><h4>Interview 1 (22)</h4><div class="interviewer">Q: Museum experience?</div><div class="interviewee">Boring, bad navigation. AR mini-program sounds perfect.</div></div>
-            <div class="interview-item"><h4>Interview 2 (20)</h4><div class="interviewer">Q: What changes would motivate you?</div><div class="interviewee">Interactive AR, badges, play while learning.</div></div>
+        <div class="interview-content" id="preUse">
+            <div class="interview-item">
+                <h4>Interview 1: Young Person (22 years old, senior university student)</h4>
+                <div class="interviewer">Interviewer: Hi, thank you for participating in this interview. Could you share your recent experience of visiting a museum? How did you feel about it?</div>
+                <div class="interviewee">Interviewee: Sure. Last month, my roommate and I went to a local museum. To be honest, it was really boring. Most of the exhibits were hidden behind glass, with lengthy and boring textual descriptions. I couldn't understand most of the technical terms and there was no interesting way to learn about them. We walked for 30 minutes and left early because we felt we were just wasting time.</div>
+                <div class="interviewer">Interviewer: What bothered you the most during the visit?</div>
+                <div class="interviewee">Interviewee: There were two things. First, the navigation was very bad. The museum's map was confusing and we spent a long time looking for the exhibits we wanted to see. Secondly, there was a lack of interaction. It was just "watch and read" - no games, no feedback, no anything that made me feel involved. I preferred the interactive experience on social media or in mobile games.</div>
+                <div class="interviewer">Interviewer: If there was an AR mini-program that allowed you to sign in at the exhibition site, get an artificial intelligence explanation, and navigate through AR, would you be willing to try it?</div>
+                <div class="interviewee">Interviewee: Of course! This sounds much better. I don't like downloading apps, so a mini-program would be perfect. Augmented reality navigation could solve the direction problem, and the sign-in activity would make the visit more interesting. I think this would make the museum no longer be a "learning" place but more of a "play" place.</div>
+            </div>
+            <div class="interview-item">
+                <h4>Interview 2: Young Adult (20 years old, sophomore)</h4>
+                <div class="interviewer">Interviewer: Hello! Could you talk about your attitude towards visiting a museum? Do you go often?</div>
+                <div class="interviewee">Interviewee: I rarely go - maybe once a year, only when my family asks me to. I think museums are really boring. The exhibits are outdated, far removed from my daily life, and the explanations are too academic. I can't relate to them at all. I'd rather stay at home and watch videos or play games.</div>
+                <div class="interviewer">Interviewer: What kind of changes would make you more willing to visit a museum?</div>
+                <div class="interviewee">Interviewee: I hope there is something interactive and easy to understand. For example, if I could scan an exhibit with my phone, I could see a short augmented reality video or get a simple explanation, that would be great. Additionally, some interesting activities, such as collecting badges or completing small tasks, could also motivate me to explore more content. I don't want to feel like I'm receiving a lesson - I'd like to play while learning.</div>
+                <div class="interviewer">Interviewer: What do you think of a mini-program that includes interactive games and allows me to collect badges at different museums?</div>
+                <div class="interviewee">Interviewee: This is really great! The mini-program sounds very convenient. And it sounds like you could collect badges at different museums and visit them. I really like this model and even would try it with my friends.</div>
+            </div>
         </div>
     </div>
-    <div class="interview-photos">
-        <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/9eb8df2582d9902d4ffed9f4d0454cf.jpg" alt="Interview"></div>
-        <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/8a039e997ca166ffc1e8f873cb025d7.jpg" alt="Interview2"></div>
-    </div>
-</div>
 
 <!-- ================= 三、Design Concept ================= -->
 <div class="section" id="design-concept">
     <h2>Design Concept & Visual Gallery</h2>
     <div class="box">
+         <!-- Low-fidelity prototype (新增小类) -->
+    <div id="low-fidelity">
+        <h3>📱 Low-fidelity Prototype</h3>
+        <div class="box" style="text-align: center;">
+            <p style="margin-bottom: 1rem;">Explore our interactive low-fidelity prototype on Figma:</p>
+            <a class="btn-link" href="https://www.figma.com/design/SfrZScwq6pV2UJyYwWP2GI/ARtifact-?node-id=12-372&m=dev&t=XJ6HWqPuiZvnh2dO-1" target="_blank" rel="noopener noreferrer">🔗 Open Figma Prototype (ARtifact)</a>
+            <p class="legacy-notes" style="margin-top: 1rem;">The prototype demonstrates core user flows: AR check-in, navigation overlay, badge collection and AI explanation interface.</p>
+        </div>
+    </div>
+        
         <p>In the early design stage, the team tried diverse styles including traditional Chinese aesthetics and dark-mode interfaces. After comparison, a concise and modern visual style was finally selected to adapt to dim museum lighting and AR superposition effects.</p>
         <p style="margin-top: 0.8rem;">To reduce development pressure, the project abandoned high-cost mini-games for each exhibit. Instead, a unified check-in and achievement system was constructed, balancing development cost, user experience and long-term iteration.</p>
     </div>
@@ -611,12 +622,31 @@
 <div class="section" id="evaluation-reflect">
     <h2>Evaluation and Reflection</h2>
     <div class="interview-section" id="after-use">
-        <div class="interview-header" onclick="toggleInterview('postUseEval')"><h3>📝 After Using the Web AR Program</h3><span id="postUseEvalIcon">+</span></div>
-        <div class="interview-content" id="postUseEval">
-            <div class="interview-item"><h4>User 1 (22)</h4><div class="interviewee">AR navigation and badges changed museum experience. AI explanations clear. Recommend to friends.</div></div>
-            <div class="interview-item"><h4>User 2 (20)</h4><div class="interviewee">Browser-based, fun check-in and badge photos. Totally changed my view.</div></div>
+        <div class="interview-header" onclick="toggleInterview('postUseEval')">
+             <div class="interview-section">
+        <div class="interview-header" onclick="toggleInterview('postUse')">
+            <h3>Part 2: After Using the Web AR Program</h3>
+            <span id="postUseIcon">+</span>
+        </div>
+        <div class="interview-content" id="postUse">
+            <div class="interview-item">
+                <h4>Interview 1: Young Person (22 years old, senior university student)</h4>
+                <div class="interviewer">Interviewer: We meet again! You just used our Web AR Museum Registration Mini-Program during your visit. Could you share your overall experience?</div>
+                <div class="interviewee">Interviewee: It was amazing - much better than my last visit to the museum! First, the AR navigation was very helpful. I opened this program in the browser and the virtual arrows guided me directly to the registration area. I didn't get lost at all, which saved me a lot of time. Secondly, the sign-in system was very interesting. Every time I scanned an exhibit, I would unlock a badge, and this felt like completing a game task. It made me want to go to all the sign-in points.</div>
+                <div class="interviewer">Interviewer: What do you think of the AI explanation function?</div>
+                <div class="interviewee">Interviewee: It was perfect for me. The explanation is concise, easy to understand, and not overly academic - I can easily grasp the background of each exhibit. The voice narration is clear, so I don't have to keep staring at the phone screen. I also asked a few questions about the exhibits, and the artificial intelligence gave me quick and useful answers. This made the exhibits feel more "vibrant".</div>
+                <div class="interviewer">Interviewer: Are there any areas we can improve, or would you recommend this project to others?</div>
+                <div class="interviewee">Interviewee: I definitely would recommend it to my friends! But unfortunately, I didn't see the small games mentioned earlier in it. I believe that if we could add small games to the key exhibits, it would definitely be more interesting. Overall, it solved all the problems I had before - navigation, boredom, and the difficulty of understanding the exhibits. This made museum visits fun and meaningful.</div>
+            </div>
+            <div class="interview-item">
+                <h4>Interview 2: Young Adults (20 years old, a sophomore student)</h4>
+                <div class="interviewer">Interviewer: Hello! How was your experience using our mini-program during the museum visit?</div>
+                <div class="interviewee">Interviewee: I was truly astonished - this completely changed my view of the museum! I originally thought it would be very complicated, but in fact, it was very simple to use. I just needed to open the link in the browser and didn't need to download any applications. This was really great. The AR check-in was also very interesting: I scanned each exhibit, unlocked badges, and even took photos. The only small suggestion is to add more hidden check-in points to make it more challenging.</div>
+            </div>
         </div>
     </div>
+</div>
+
     <div class="interview-section" id="system-evaluation">
         <div class="interview-header" onclick="toggleInterview('systemEval')"><h3>📊 System Evaluation (SUS, MES, UEQ-S)</h3><span id="systemEvalIcon">+</span></div>
         <div class="interview-content" id="systemEval">
