@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CPT208-A3-2 | Museum AR Project - Full Version</title>
+    <title>CPT208-A3-2 | Museum AR Project - Final</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,7 @@
             padding-right: 1.5rem;
         }
 
-        /* ========= 顶部导航栏（下拉菜单样式） ========= */
+        /* ========= 顶部导航栏（修复：使用点击展开，稳定可靠） ========= */
         .navbar {
             position: fixed;
             top: 0;
@@ -56,11 +56,13 @@
             background: none;
             border: none;
             font-family: inherit;
-            padding: 6px 0;
+            padding: 6px 12px;
+            border-radius: 6px;
         }
 
         .dropbtn:hover {
             color: #58a6ff;
+            background-color: #1f242e;
         }
 
         .dropdown-content {
@@ -97,7 +99,8 @@
             color: #58a6ff;
         }
 
-        .dropdown:hover .dropdown-content {
+        /* 显示下拉菜单（由JS控制） */
+        .dropdown-content.show {
             display: block;
         }
 
@@ -227,15 +230,9 @@
             padding-bottom: 1.2rem;
             border-bottom: 1px solid #30363d;
         }
-        .interview-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
         .interviewer {
             color: #7ee787;
             font-weight: 500;
-            margin-bottom: 0.3rem;
         }
         .interviewee {
             color: #adbac7;
@@ -264,7 +261,6 @@
         .interview-photos img {
             width: 100%;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
         .evaluation-imgs {
             display: flex;
@@ -275,7 +271,6 @@
         .evaluation-imgs img {
             width: 100%;
             border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
         .tech-grid {
             display: flex;
@@ -299,11 +294,10 @@
             border-color: #30363d;
             margin: 1.2rem 0;
         }
-        ul, .custom-ul {
+        ul {
             margin-left: 1.6rem;
             margin-top: 0.4rem;
         }
-        /* 用户旅程地图卡片样式 */
         .journey-card {
             background: #0f1419;
             border-radius: 20px;
@@ -355,14 +349,26 @@
         .meetings-container {
             margin-top: 1rem;
         }
+        .btn-link {
+            background: #238636;
+            padding: 0.5rem 1rem;
+            border-radius: 12px;
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn-link:hover {
+            background: #2ea043;
+        }
     </style>
 </head>
 <body>
 
-<!-- ========= 顶部导航栏（下拉菜单大类，包含新增的会议记录索引） ========= -->
+<!-- ========= 顶部导航栏（修复：点击展开/收起） ========= -->
 <div class="navbar">
     <div class="dropdown">
-        <span class="dropbtn">Motivation and Research ▼</span>
+        <button class="dropbtn">Motivation and Research ▼</button>
         <div class="dropdown-content">
             <a href="#reason-report">Reason Report</a>
             <a href="#motivation-main">Overview</a>
@@ -371,37 +377,38 @@
         </div>
     </div>
     <div class="dropdown">
-        <span class="dropbtn">User demand ▼</span>
+        <button class="dropbtn">User demand ▼</button>
         <div class="dropdown-content">
             <a href="#user-journey">User Journey Map</a>
+            <a href="#low-fidelity">Low-fidelity prototype</a>
             <a href="#questionnaire-survey">Questionnaire Survey</a>
             <a href="#pre-investigation">Preliminary Investigation</a>
         </div>
     </div>
     <div class="dropdown">
-        <span class="dropbtn">Design Concept ▼</span>
+        <button class="dropbtn">Design Concept ▼</button>
         <div class="dropdown-content">
             <a href="#design-concept">Design & Gallery</a>
         </div>
     </div>
     <div class="dropdown">
-        <span class="dropbtn">Technological realization ▼</span>
+        <button class="dropbtn">Technological realization ▼</button>
         <div class="dropdown-content">
             <a href="#tech-overview">Tech Stack</a>
             <a href="#architecture-detail">Architecture</a>
-            <a href="#challenges-solutions">Challenges</a>
+            <a href="#contributions">Contributions</a>
         </div>
     </div>
     <div class="dropdown">
-        <span class="dropbtn">Evaluation and Reflection ▼</span>
+        <button class="dropbtn">Evaluation and Reflection ▼</button>
         <div class="dropdown-content">
             <a href="#after-use">After Using</a>
             <a href="#system-evaluation">SUS/MES/UEQ</a>
-            <a href="#reflection-future">Reflection</a>
+            <a href="#final-reflection">Final Reflection</a>
         </div>
     </div>
     <div class="dropdown">
-        <span class="dropbtn">Meeting Records ▼</span>
+        <button class="dropbtn">Meeting Records ▼</button>
         <div class="dropdown-content">
             <a href="#meetings-full">All Meetings</a>
         </div>
@@ -410,7 +417,7 @@
 
 <h1 class="title">CPT208-A3-2 Museum AR Project</h1>
 
-<!-- Team Section (no index in navbar) -->
+<!-- Team Section -->
 <div class="section" id="team-section">
     <h2>👥 Team Member Profiles</h2>
     <div class="box">
@@ -424,7 +431,7 @@
     </div>
 </div>
 
-<!-- ================= 一、Motivation and Research (新增 Reason Report 置顶) ================= -->
+<!-- ================= 一、Motivation and Research ================= -->
 <div class="section" id="reason-report">
     <h2>📌 Reason Report</h2>
     <div class="box">
@@ -440,7 +447,6 @@
         <p>With the deep integration of digital technology and museum scenarios, AR navigation and AI interpretation have become effective ways to attract young visitors. Nevertheless, most existing museum solutions face common limitations, including homogenized content, weak interactivity, and poor lightweight experience. Traditional AR game development requires high costs and causes heavy performance consumption, while mainstream museum applications rely on single textual or audio guidance, lacking attractive interactive mechanisms.</p>
         <p style="margin-top: 0.8rem;">This project focuses on the core pain point that modern young users generally regard museum visits as boring and passive. We design a lightweight WebAR museum system based on Unity and WebGL. By adopting AR scene recognition, intelligent AI explanation, and gamified check-in mechanics, the project delivers an immersive and low-threshold visiting experience without downloading additional applications, helping young users better understand cultural heritage and increasing long-term museum engagement.</p>
     </div>
-
     <h3 id="academic-paper">📄 Academic Paper Analysis</h3>
     <table>
         <tr><th>Research Topic</th><th>Key Strengths</th><th>Main Limitations</th></tr>
@@ -449,7 +455,6 @@
         <tr><td>AR Gamification in Science Museums</td><td>Strengthen emotional interaction and knowledge popularization</td><td>Small experimental scale, easy to cause experience overload</td></tr>
         <tr><td>AR Technology for Historical Museums</td><td>Build cross-temporal cultural connection and improve satisfaction</td><td>Strong scenario restriction, high technical threshold</td></tr>
     </table>
-    
     <h3 id="benchmark-analysis">🏆 Product Benchmark Analysis</h3>
     <table>
         <tr><th>Existing Product</th><th>Advantages</th><th>Limitations</th></tr>
@@ -466,132 +471,137 @@
     </div>
 </div>
 
-<!-- ================= 二、User demand (新增 User Journey Map 置顶) ================= -->
-<div class="section" id="user-journey">
-    <h2>🧭 User Journey Map</h2>
-    
-    <!-- Journey 1: History Enthusiast Charles -->
-    <div class="journey-card">
-        <div class="journey-title">📜 History Enthusiast · Charles</div>
-        <div class="phase-grid">
-            <div class="phase"><h4>🔍 Discovery & Entry</h4><p><strong>Action:</strong> Opens webpage in hall, no download waiting.<br><strong>Touchpoint:</strong> Mobile browser<br><strong>Emotion:</strong> Slight suspicion but instant low-friction access makes him willing to try. Emotion shifts from skeptical observation to initial acceptance.</p></div>
-            <div class="phase"><h4>🏛️ Exploration & Deep Dive</h4><p><strong>Action:</strong> Scans exhibits; detailed information appears. Pinches to zoom on patterns, taps annotation points to see soil layers and craftsmanship.<br><strong>Touchpoint:</strong> 3D relic model, layered info labels<br><strong>Emotion:</strong> Visually accesses hidden structures; curiosity is fully engaged. Emotion rises to immersive focus.</p></div>
-            <div class="phase"><h4>💡 Interaction & Understanding</h4><p><strong>Action:</strong> Interacts with AI, listens to restoration story from fragments to complete artifact.<br><strong>Touchpoint:</strong> AI chat, voice narration<br><strong>Emotion:</strong> “No more switching apps for information.” Seamless deep-dive feels efficient and satisfying.</p></div>
-            <div class="phase"><h4>🎒 Harvest & Departure</h4><p><strong>Action:</strong> Bookmarks interested items to personal learning folder, browses community posts.<br><strong>Touchpoint:</strong> Collection feature, knowledge summary<br><strong>Emotion:</strong> Time well spent; the visit feels substantial, not superficial. Emotion ends with fulfillment and certainty.</p></div>
-        </div>
-        <div class="emotion-line">
-            <p><strong>📈 Emotional Curve:</strong> Skeptical observation → Initial acceptance → Immersive focus → Efficient satisfaction → Fulfilled certainty <em>(Steady upward with a long high plateau of engagement)</em></p>
-            <svg class="line-chart" viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="background:#0d1117; border-radius:12px; padding:8px;">
-                <polyline points="20,95 160,85 300,40 500,35 660,20" stroke="#7ee787" stroke-width="2.5" fill="none" stroke-dasharray="0"/>
-                <circle cx="20" cy="95" r="3.5" fill="#58a6ff"/>
-                <circle cx="160" cy="85" r="3.5" fill="#58a6ff"/>
-                <circle cx="300" cy="40" r="3.5" fill="#58a6ff"/>
-                <circle cx="500" cy="35" r="3.5" fill="#58a6ff"/>
-                <circle cx="660" cy="20" r="3.5" fill="#58a6ff"/>
-                <text x="5" y="110" fill="#8b949e" font-size="9">Start</text>
-                <text x="640" y="15" fill="#8b949e" font-size="9">End</text>
-                <text x="130" y="110" fill="#6e7681" font-size="8">Accept</text>
-                <text x="370" y="45" fill="#6e7681" font-size="8">Immersion</text>
-            </svg>
-        </div>
-        <div class="legacy-notes">※ Charles values knowledge depth; the system provides layer-by-layer archaeology interaction and AI contextual dialogue.</div>
-    </div>
-
-    <!-- Journey 2: Photo-Lover Jenny -->
-    <div class="journey-card">
-        <div class="journey-title">📸 Photo-Lover · Jenny</div>
-        <div class="phase-grid">
-            <div class="phase"><h4>✨ Attraction & Discovery</h4><p><strong>Action:</strong> Drawn by “artifact check-in” animations on entrance poster, opens webpage and sees clean blue-themed AR interface.<br><strong>Touchpoint:</strong> Poster, browser first screen<br><strong>Emotion:</strong> From casual wandering to “this looks fun.” Emotion jumps from boredom to curiosity.</p></div>
-            <div class="phase"><h4>📷 Check-in & Picture-Perfect</h4><p><strong>Action:</strong> Finds angles, poses friend next to virtual relic, takes “alive” artifact photo.<br><strong>Touchpoint:</strong> Virtual relic overlay, camera UI<br><strong>Emotion:</strong> Static relics become playful co-models; the exhibition feels engaging. Emotion rises to delightful surprise.</p></div>
-            <div class="phase"><h4>🌟 Generate & Share</h4><p><strong>Action:</strong> Fun AI interaction, saves and directly shares to Moments.<br><strong>Touchpoint:</strong> WeChat Moments<br><strong>Emotion:</strong> Effortlessly produces aesthetic social content. Achieves easy pride. Emotion hits a playful peak.</p></div>
-            <div class="phase"><h4>🎁 Memento & Closure</h4><p><strong>Action:</strong> Browses related posts, interacts with other visitors.<br><strong>Touchpoint:</strong> Social sharing page<br><strong>Emotion:</strong> A visit that might have been “too hard to understand” becomes light and rewarding. She leaves with a light sense of satisfaction.</p></div>
-        </div>
-        <div class="emotion-line">
-            <p><strong>📈 Emotional Curve:</strong> Bored wandering → Curious & playful → Delightful surprise → Playful pride → Light satisfaction <em>(Low start, multiple cheerful peaks, ends high)</em></p>
-            <svg class="line-chart" viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="background:#0d1117; border-radius:12px; padding:8px;">
-                <polyline points="20,95 150,65 320,40 500,50 660,35" stroke="#ffb347" stroke-width="2.5" fill="none"/>
-                <circle cx="20" cy="95" r="3.5" fill="#f0883e"/>
-                <circle cx="150" cy="65" r="3.5" fill="#f0883e"/>
-                <circle cx="320" cy="40" r="3.5" fill="#f0883e"/>
-                <circle cx="500" cy="50" r="3.5" fill="#f0883e"/>
-                <circle cx="660" cy="35" r="3.5" fill="#f0883e"/>
-                <text x="5" y="110" fill="#8b949e" font-size="9">Start</text>
-                <text x="640" y="30" fill="#8b949e" font-size="9">End</text>
-                <text x="130" y="90" fill="#6e7681" font-size="8">Curious</text>
-                <text x="290" y="55" fill="#6e7681" font-size="8">Delight</text>
-            </svg>
-        </div>
-        <div class="legacy-notes">※ Jenny values visual aesthetics and shareable moments; AR characters and one-click sharing are crucial.</div>
-    </div>
-</div>
-
-<div class="section" id="user-demand-details">
+<!-- ================= 二、User demand Research ================= -->
+<div class="section" id="user-demand-research">
     <h2>User demand Research</h2>
-    <!-- Questionnaire Survey -->
+    
+    <!-- 1. User Journey Map (移入大类) -->
+    <div id="user-journey">
+        <h3>🧭 User Journey Map</h3>
+        <div class="journey-card">
+            <div class="journey-title">📜 History Enthusiast · Charles</div>
+            <div class="phase-grid">
+                <div class="phase"><h4>🔍 Discovery & Entry</h4><p><strong>Action:</strong> Opens webpage in hall, no download waiting.<br><strong>Emotion:</strong> Slight suspicion → initial acceptance.</p></div>
+                <div class="phase"><h4>🏛️ Exploration & Deep Dive</h4><p><strong>Action:</strong> Scans exhibits, taps annotations for soil layers & craftsmanship.<br><strong>Emotion:</strong> Curiosity engaged → immersive focus.</p></div>
+                <div class="phase"><h4>💡 Interaction & Understanding</h4><p><strong>Action:</strong> AI chat, listens to restoration story.<br><strong>Emotion:</strong> Efficient and satisfying deep-dive.</p></div>
+                <div class="phase"><h4>🎒 Harvest & Departure</h4><p><strong>Action:</strong> Bookmarks items, browses community posts.<br><strong>Emotion:</strong> Fulfilled and certain.</p></div>
+            </div>
+            <div class="emotion-line">
+                <p><strong>📈 Emotional Curve:</strong> Skeptical → Acceptance → Immersive → Satisfied → Fulfilled <em>(Steady upward)</em></p>
+                <svg class="line-chart" viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="background:#0d1117; border-radius:12px; padding:8px;">
+                    <polyline points="20,85 160,75 300,35 500,30 660,15" stroke="#7ee787" stroke-width="2.5" fill="none"/>
+                    <circle cx="20" cy="85" r="3.5" fill="#58a6ff"/><circle cx="160" cy="75" r="3.5" fill="#58a6ff"/>
+                    <circle cx="300" cy="35" r="3.5" fill="#58a6ff"/><circle cx="500" cy="30" r="3.5" fill="#58a6ff"/>
+                    <circle cx="660" cy="15" r="3.5" fill="#58a6ff"/>
+                </svg>
+            </div>
+        </div>
+        <div class="journey-card">
+            <div class="journey-title">📸 Photo-Lover · Jenny</div>
+            <div class="phase-grid">
+                <div class="phase"><h4>✨ Attraction & Discovery</h4><p><strong>Action:</strong> Drawn by poster animations, opens webpage.<br><strong>Emotion:</strong> Bored wandering → curious.</p></div>
+                <div class="phase"><h4>📷 Check-in & Picture-Perfect</h4><p><strong>Action:</strong> Takes “alive” artifact photo with virtual relic.<br><strong>Emotion:</strong> Delightful surprise.</p></div>
+                <div class="phase"><h4>🌟 Generate & Share</h4><p><strong>Action:</strong> AI interaction, shares to Moments.<br><strong>Emotion:</strong> Playful pride.</p></div>
+                <div class="phase"><h4>🎁 Memento & Closure</h4><p><strong>Action:</strong> Browses posts, interacts with others.<br><strong>Emotion:</strong> Light satisfaction.</p></div>
+            </div>
+            <div class="emotion-line">
+                <p><strong>📈 Emotional Curve:</strong> Bored → Curious → Delight → Pride → Satisfied <em>(Low start, cheerful peaks)</em></p>
+                <svg class="line-chart" viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="background:#0d1117; border-radius:12px; padding:8px;">
+                    <polyline points="20,85 150,55 320,30 500,45 660,30" stroke="#ffb347" stroke-width="2.5" fill="none"/>
+                    <circle cx="20" cy="85" r="3.5" fill="#f0883e"/><circle cx="150" cy="55" r="3.5" fill="#f0883e"/>
+                    <circle cx="320" cy="30" r="3.5" fill="#f0883e"/><circle cx="500" cy="45" r="3.5" fill="#f0883e"/>
+                    <circle cx="660" cy="30" r="3.5" fill="#f0883e"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Low-fidelity prototype (新增小类) -->
+    <div id="low-fidelity">
+        <h3>📱 Low-fidelity Prototype</h3>
+        <div class="box" style="text-align: center;">
+            <p style="margin-bottom: 1rem;">Explore our interactive low-fidelity prototype on Figma:</p>
+            <a class="btn-link" href="https://www.figma.com/design/SfrZScwq6pV2UJyYwWP2GI/ARtifact-?node-id=12-372&m=dev&t=XJ6HWqPuiZvnh2dO-1" target="_blank" rel="noopener noreferrer">🔗 Open Figma Prototype (ARtifact)</a>
+            <p class="legacy-notes" style="margin-top: 1rem;">The prototype demonstrates core user flows: AR check-in, navigation overlay, badge collection and AI explanation interface.</p>
+        </div>
+    </div>
+
+    <!-- 3. Questionnaire Survey -->
     <div class="interview-section" id="questionnaire-survey">
         <div class="interview-header" onclick="toggleInterview('surveyDemand')">
             <h3>📊 Questionnaire Survey</h3>
             <span id="surveyDemandIcon">+</span>
         </div>
         <div class="interview-content" id="surveyDemand">
-            <div class="img-wrap">
-                <img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/599a03525fac4eb413ac9f61a18aec1.png" alt="Questionnaire Content">
-                <div class="img-desc">Questionnaire Content</div>
-            </div>
+            <div class="img-wrap"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/599a03525fac4eb413ac9f61a18aec1.png" alt="Questionnaire Content"><div class="img-desc">Questionnaire Content</div></div>
             <div class="survey-scroll">
-                <img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/76c2f8e957b46c5c3c07cdc26166b6e.png" alt="Survey Result 1">
-                <img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/f642beac7d0ea202c0f54132f7dd8a8.png" alt="Survey Result 2">
-                <img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/baf6cf75b4db492f40373b0e08aa564.png" alt="Survey Result 3">
+                <img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/76c2f8e957b46c5c3c07cdc26166b6e.png" alt="Result1">
+                <img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/f642beac7d0ea202c0f54132f7dd8a8.png" alt="Result2">
+                <img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/baf6cf75b4db492f40373b0e08aa564.png" alt="Result3">
             </div>
-            <div class="img-desc">Survey Results (Scroll to View)</div>
         </div>
     </div>
 
-    <!-- Preliminary Investigation -->
+    <!-- 4. Preliminary Investigation -->
     <div class="interview-section" id="pre-investigation">
         <div class="interview-header" onclick="toggleInterview('preUseDemand')">
-            <h3>🎙️ Part 1: Preliminary Investigation (Before Using)</h3>
+            <h3>🎙️ Preliminary Investigation (Before Using)</h3>
             <span id="preUseDemandIcon">+</span>
         </div>
         <div class="interview-content" id="preUseDemand">
-            <div class="interview-item"><h4>Interview 1: Young Person (22)</h4><div class="interviewer">Interviewer: Museum experience?</div><div class="interviewee">Boring, bad navigation, no interaction. AR mini-program with check-in sounds perfect.</div></div>
-            <div class="interview-item"><h4>Interview 2: Sophomore (20)</h4><div class="interviewer">Interviewer: What changes would make you visit?</div><div class="interviewee">Interactive AR, badges, small tasks. Play while learning.</div></div>
+            <div class="interview-item"><h4>Interview 1 (22)</h4><div class="interviewer">Q: Museum experience?</div><div class="interviewee">Boring, bad navigation. AR mini-program sounds perfect.</div></div>
+            <div class="interview-item"><h4>Interview 2 (20)</h4><div class="interviewer">Q: What changes would motivate you?</div><div class="interviewee">Interactive AR, badges, play while learning.</div></div>
         </div>
     </div>
     <div class="interview-photos">
-        <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/9eb8df2582d9902d4ffed9f4d0454cf.jpg" alt="Interview Scene 1"></div>
-        <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/8a039e997ca166ffc1e8f873cb025d7.jpg" alt="Interview Scene 2"></div>
+        <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/9eb8df2582d9902d4ffed9f4d0454cf.jpg" alt="Interview"></div>
+        <div class="img-item"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/8a039e997ca166ffc1e8f873cb025d7.jpg" alt="Interview2"></div>
     </div>
 </div>
 
-<!-- ================= 三、Design Concept & Visual Gallery ================= -->
+<!-- ================= 三、Design Concept ================= -->
 <div class="section" id="design-concept">
     <h2>Design Concept & Visual Gallery</h2>
     <div class="box">
-        In the early design stage, the team tried diverse styles including traditional Chinese aesthetics and dark-mode interfaces. After comparison, a concise and modern visual style was finally selected to adapt to dim museum lighting and AR superposition effects.
-        To reduce development pressure and improve operational efficiency, the project abandoned the high-cost solution of designing independent mini-games for each exhibit. Instead, a unified check-in and achievement system was constructed. Combined with AR real-world positioning and interactive maps, it balances development cost, user experience and long-term iteration.
+        <p>In the early design stage, the team tried diverse styles including traditional Chinese aesthetics and dark-mode interfaces. After comparison, a concise and modern visual style was finally selected to adapt to dim museum lighting and AR superposition effects.</p>
+        <p style="margin-top: 0.8rem;">To reduce development pressure, the project abandoned high-cost mini-games for each exhibit. Instead, a unified check-in and achievement system was constructed, balancing development cost, user experience and long-term iteration.</p>
     </div>
-    <div class="img-wrap"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/424d6c1c182ef85daf4af4a35e43bdf.jpg" alt="Design Draft"><div class="img-desc">First Design Draft</div></div>
-    <div class="img-wrap"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/72206ca477a24f155c61033856226cf.jpg" alt="low-fidelity model"><div class="img-desc">Original UI Interface</div></div>
-    <div class="img-wrap"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/265a0a064af1770ba53c7c75ff6268d.png" alt="system architecture"><div class="img-desc">Version 2.0 Optimized Design</div></div>
+    <div class="img-wrap"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/424d6c1c182ef85daf4af4a35e43bdf.jpg" alt="Draft"><div class="img-desc">First Design Draft</div></div>
+    <div class="img-wrap"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/72206ca477a24f155c61033856226cf.jpg" alt="UI"><div class="img-desc">Original UI Interface</div></div>
+    <div class="img-wrap"><img src="https://raw.githubusercontent.com/JielinWang23/CPT208-A3-2/main/265a0a064af1770ba53c7c75ff6268d.png" alt="Optimized"><div class="img-desc">Version 2.0 Optimized Design</div></div>
 </div>
 
-<!-- ================= 四、Technological realization ================= -->
+<!-- ================= 四、Technological realization + 个人贡献表格 ================= -->
 <div class="section" id="tech-overview">
     <h2>Technological realization</h2>
     <div class="tech-grid">
-        <div class="tech-card"><h4>📱 Unity + WebGL</h4><p>Cross-platform lightweight deployment, runs in browser.</p></div>
+        <div class="tech-card"><h4>📱 Unity + WebGL</h4><p>Cross-platform, browser-based, no installation.</p></div>
         <div class="tech-card"><h4>🎯 UnityWebAR</h4><p>Image recognition & tracking for AR check-in.</p></div>
         <div class="tech-card"><h4>🤖 Gemini 1.5 Flash + Azure TTS</h4><p>Intelligent Q&A & natural voice narration.</p></div>
         <div class="tech-card"><h4>🗺️ AR Navigation</h4><p>Virtual arrows & interactive map.</p></div>
     </div>
     <div class="box" id="architecture-detail">
         <h3>🏛️ System Architecture</h3>
-        <p>Three-layer architecture: Presentation Layer (WebGL frontend), Logic Layer (check‑in engine, achievements, API gateway), Data Layer (exhibit database, user progress).</p>
+        <p>Three-layer architecture: Presentation Layer (WebGL frontend), Logic Layer (check‑in, achievements, API gateway), Data Layer (exhibit database, user progress).</p>
         <hr>
-        <h3 id="challenges-solutions">🛠️ Key Challenges & Solutions</h3>
-        <ul><li><strong>Performance:</strong> Optimized 3D models, texture compression → 30+ FPS.</li><li><strong>Tracking Stability:</strong> Enhanced feature points + gyroscope fallback.</li><li><strong>AI Latency:</strong> Streaming TTS + local cache.</li><li><strong>Compatibility:</strong> Adapted camera APIs for Safari/Chrome.</li></ul>
+        <h3>🛠️ Key Technical Challenges</h3>
+        <ul><li>Performance: Optimized models → 30+ FPS.</li><li>Tracking Stability: Enhanced feature points + gyroscope.</li><li>AI Latency: Streaming TTS + local cache.</li><li>Compatibility: Adapted camera APIs for Safari/Chrome.</li></ul>
     </div>
+
+    <!-- 个人贡献表格 (仅框架，内容留空待填) -->
+    <h3 id="contributions">👥 Individual Contributions Framework</h3>
+    <table>
+        <thead>
+            <tr><th>Team Member</th><th>Code & Development</th><th>UI / Visual Design</th><th>Content & Copywriting</th><th>Testing & QA</th></tr>
+        </thead>
+        <tbody>
+            <tr><td class="name">Shiqi.Gao</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="name">Jielin.Wang</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="name">Yi.Li</td><td></td><td></td><td></td><td></td></tr>
+            <tr><td class="name">Kai.Xu</td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+    </table>
+    <p class="legacy-notes">※ This table records each member’s contribution in four dimensions. Details to be filled in after final collaboration review.</p>
 </div>
 
 <!-- ================= 五、Evaluation and Reflection ================= -->
@@ -600,8 +610,8 @@
     <div class="interview-section" id="after-use">
         <div class="interview-header" onclick="toggleInterview('postUseEval')"><h3>📝 After Using the Web AR Program</h3><span id="postUseEvalIcon">+</span></div>
         <div class="interview-content" id="postUseEval">
-            <div class="interview-item"><h4>Interview 1 (22)</h4><div class="interviewee">Amazing! AR navigation, sign-in badges, clear AI explanation. Recommend to friends.</div></div>
-            <div class="interview-item"><h4>Interview 2 (20)</h4><div class="interviewee">Changed my view of museums! Browser‑based, fun check‑in & badge photos.</div></div>
+            <div class="interview-item"><h4>User 1 (22)</h4><div class="interviewee">AR navigation and badges changed museum experience. AI explanations clear. Recommend to friends.</div></div>
+            <div class="interview-item"><h4>User 2 (20)</h4><div class="interviewee">Browser-based, fun check-in and badge photos. Totally changed my view.</div></div>
         </div>
     </div>
     <div class="interview-section" id="system-evaluation">
@@ -614,10 +624,12 @@
             </div>
         </div>
     </div>
-    <div class="box" id="reflection-future">
-        <h3>💡 Reflection & Future Improvement</h3>
-        <p>SUS average 82.5, MES positive, UEQ-S above average. Users appreciated lightweight gamified experience. Future: deeper mini‑games, friend ranking, personalized AI, more museums.</p>
-        <p><strong>✅ Conclusion:</strong> Browser‑based AR check‑in + AI effectively increases engagement and reduces boredom.</p>
+
+    <!-- 新增 Final Reflection -->
+    <div class="box" id="final-reflection">
+        <h3>📌 Final Reflection</h3>
+        <p>This project carries clear social and ethical implications for cultural heritage communication and user experience design. From a social perspective, the Web AR museum check-in system lowers the barrier for young people to access traditional cultural heritage, promotes the inheritance and popularisation of museum culture, and encourages a positive leisure lifestyle by guiding more young users to engage with offline cultural venues. Ethically, the design adheres to user privacy principles: the system requires no unnecessary personal information collection, all AR and browsing data is processed locally on the browser, and no user behavioural data is illegally stored or shared. The interface and content also maintain cultural respect, avoiding arbitrary distortion or entertainment overinterpretation of historical relics.</p>
+        <p style="margin-top: 1rem;">In terms of the use of generative AI during the project, AI was reasonably adopted for academic writing polishing, questionnaire content drafting, chart layout optimisation, and natural language exhibit explanation generation. AI was used only as a productivity and auxiliary tool, rather than replacing independent design, research reasoning and creative decision-making, fully complying with generative AI usage regulations and academic integrity requirements.</p>
     </div>
 </div>
 
@@ -625,19 +637,52 @@
 <div class="section" id="meetings-full">
     <h2>🗂️ Meeting Records (Full Process)</h2>
     <div class="meetings-container">
-        <div class="meeting-box"><strong>Meeting 1 (Mar 14, 2026):</strong> Project Direction (AR Mini-Game). Confirmed AR mini-game direction based on low youth engagement. Assigned roles.</div>
-        <div class="meeting-box"><strong>Meeting 2 (Mar 21, 2026):</strong> Plan Adjustment to Check-in System. Changed to lightweight AR check-in + navigation + AI guide due to cost & performance.</div>
-        <div class="meeting-box"><strong>Meeting 3 (Mar 28, 2026):</strong> Tech Stack & Architecture. Selected Unity + WebGL + UnityWebAR + Gemini + Azure TTS.</div>
-        <div class="meeting-box"><strong>Meeting 4 (Apr 4, 2026):</strong> Prototype Development. UI prototype, camera tracking, fixed WebGL compatibility.</div>
-        <div class="meeting-box"><strong>Meeting 5 (Apr 11, 2026):</strong> Core Functions & API Integration. Check-in, achievements, navigation, AI connection, speech optimization.</div>
-        <div class="meeting-box"><strong>Meeting 6 (Apr 18, 2026):</strong> System Integration & Optimization. Fixed lag, arrow glitches via model simplification.</div>
-        <div class="meeting-box"><strong>Meeting 7 (Apr 20, 2026):</strong> User Testing & Iteration. Improved recognition speed, navigation, AI simplicity, browser compatibility.</div>
-        <div class="meeting-box"><strong>Meeting 8 (May 2, 2026):</strong> Final Acceptance & Video Production. All functions stable, finalized documentation and demo script.</div>
+        <div class="meeting-box"><strong>Meeting 1 (Mar 14):</strong> AR mini-game direction, initial roles.</div>
+        <div class="meeting-box"><strong>Meeting 2 (Mar 21):</strong> Changed to check-in system (cost & performance).</div>
+        <div class="meeting-box"><strong>Meeting 3 (Mar 28):</strong> Unity+WebGL + Gemini + Azure TTS.</div>
+        <div class="meeting-box"><strong>Meeting 4 (Apr 4):</strong> UI prototype, camera tracking fixes.</div>
+        <div class="meeting-box"><strong>Meeting 5 (Apr 11):</strong> Check-in, navigation, AI integration.</div>
+        <div class="meeting-box"><strong>Meeting 6 (Apr 18):</strong> Performance optimization.</div>
+        <div class="meeting-box"><strong>Meeting 7 (Apr 20):</strong> User testing & iteration.</div>
+        <div class="meeting-box"><strong>Meeting 8 (May 2):</strong> Final acceptance & video production.</div>
     </div>
 </div>
 
 <script>
-// 访谈折叠功能（会议记录不参与折叠，完全展开）
+// 稳定的下拉菜单交互：点击按钮展开/收起，点击其他地方收起所有
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    
+    // 为每个dropdown绑定按钮点击事件
+    dropdowns.forEach(dropdown => {
+        const btn = dropdown.querySelector('.dropbtn');
+        const content = dropdown.querySelector('.dropdown-content');
+        
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();  // 阻止冒泡，避免立即触发全局关闭
+            // 先关闭所有其他下拉菜单
+            document.querySelectorAll('.dropdown-content').forEach(c => {
+                if (c !== content) c.classList.remove('show');
+            });
+            // 切换当前菜单
+            content.classList.toggle('show');
+        });
+    });
+    
+    // 点击页面任意位置关闭所有下拉菜单
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => {
+            c.classList.remove('show');
+        });
+    });
+    
+    // 阻止下拉内容上的点击冒泡，以免点击内部链接时意外关闭菜单
+    document.querySelectorAll('.dropdown-content').forEach(c => {
+        c.addEventListener('click', (e) => e.stopPropagation());
+    });
+});
+
+// 访谈折叠功能（不受导航影响）
 function toggleInterview(id) {
     const content = document.getElementById(id);
     const icon = document.getElementById(id + 'Icon');
@@ -646,16 +691,11 @@ function toggleInterview(id) {
     icon.textContent = content.classList.contains('active') ? '−' : '+';
 }
 
-// 初始所有折叠区收起
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.interview-content').forEach(el => {
-        el.classList.remove('active');
-    });
-    document.querySelectorAll('[id$="Icon"]').forEach(icon => {
-        icon.textContent = '+';
-    });
+// 初始折叠区全部收起
+window.addEventListener('load', () => {
+    document.querySelectorAll('.interview-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('[id$="Icon"]').forEach(icon => icon.textContent = '+');
 });
 </script>
 </body>
 </html>
-```
