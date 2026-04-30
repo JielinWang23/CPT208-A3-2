@@ -33,9 +33,10 @@
             padding: 14px 0;
             display: flex;
             justify-content: center;
-            gap: 28px;
+            gap: 22px;
             z-index: 999;
             border-bottom: 1px solid #30363d;
+            flex-wrap: wrap;
         }
 
         .navbar a {
@@ -69,11 +70,25 @@
             scroll-margin-top: 80px;
         }
 
+        .section h3 {
+            color: #58a6ff;
+            font-size: 1.1rem;
+            margin: 1.2rem 0 0.6rem;
+        }
+
         .box {
             background: #161b22;
             padding: 1.5rem;
             border-radius: 10px;
             margin-bottom: 1.5rem;
+        }
+
+        .meeting-box {
+            background: #161b22;
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #58a6ff;
         }
 
         table {
@@ -109,7 +124,6 @@
             margin-bottom: 2rem;
         }
 
-        /* 图片专用样式 已美化完成 */
         .img-wrap {
             margin: 2rem 0;
             text-align: center;
@@ -129,16 +143,18 @@
 
 <body>
 
+<!-- 顶部导航（已新增 Meeting Records） -->
 <div class="navbar">
-    <a href="#team">Team Members</a>
-    <a href="#background">Research Background</a>
-    <a href="#academic">Academic Analysis</a>
+    <a href="#team">Team</a>
+    <a href="#background">Background</a>
     <a href="#benchmark">Benchmark</a>
-    <a href="#design">Design & Gallery</a>
+    <a href="#design">Design</a>
+    <a href="#meetings">Meeting Records</a>
 </div>
 
 <h1 class="title">CPT208-A3-2 Museum AR Project</h1>
 
+<!-- Team Members -->
 <div class="section" id="team">
     <h2>Team Members</h2>
     <table>
@@ -170,6 +186,7 @@
     </table>
 </div>
 
+<!-- Research Background -->
 <div class="section" id="background">
     <h2>Research Background and Design Motivation</h2>
     <div class="box">
@@ -178,6 +195,7 @@
     </div>
 </div>
 
+<!-- Academic Paper Analysis -->
 <div class="section" id="academic">
     <h2>Academic Paper Analysis</h2>
     <table>
@@ -217,6 +235,7 @@
     </div>
 </div>
 
+<!-- Product Benchmark -->
 <div class="section" id="benchmark">
     <h2>Product Benchmark Analysis</h2>
     <table>
@@ -243,6 +262,7 @@
     </table>
 </div>
 
+<!-- Design & Images -->
 <div class="section" id="design">
     <h2>Design Concept & Visual Gallery</h2>
     <div class="box">
@@ -250,23 +270,96 @@
         To reduce development pressure and improve operational efficiency, the project abandoned the high-cost solution of designing independent mini-games for each exhibit. Instead, a unified check-in and achievement system was constructed. Combined with AR real-world positioning and interactive maps, it balances development cost, user experience and long-term iteration. The overall design focuses on simplicity, accessibility and social sharing, making museum visits more interesting, relaxing and educational for young audiences.
     </div>
 
-    <!-- 图片位1：First Draft 初稿 -->
     <div class="img-wrap">
-        <img src="424d6c1c182ef85daf4af4a35e43bdf.jpg">
+        <img src="Paste_Your_First_Draft_Image_Link_Here" alt="Design Draft">
         <div class="img-desc">First Design Draft</div>
     </div>
-
-    <!-- 图片位2：Original UI 初代界面 -->
     <div class="img-wrap">
-        <img src="72206ca477a24f155c61033856226cf.jpg">
+        <img src="Paste_Your_Original_UI_Link_Here" alt="low-fidelity model">
         <div class="img-desc">Original UI Interface</div>
     </div>
-
-    <!-- 图片位3：Version 2.0 Draft 迭代稿 -->
     <div class="img-wrap">
-        <img src="265a0a064af1770ba53c7c75ff6268d.png">
+        <img src="Paste_Your_V2_Draft_Link_Here" alt="system architecture">
         <div class="img-desc">Version 2.0 Optimized Design</div>
     </div>
+</div>
+
+<!-- ===================== meeting ===================== -->
+<div class="section" id="meetings">
+    <h2>Meeting Records</h2>
+
+    <div class="meeting-box">
+        <h3>Meeting 1: Project Direction (AR Mini-Game)</h3>
+        <strong>Date:</strong> March 14, 2026<br>
+        <strong>Topic:</strong> Topic Selection & Initial Plan<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> Confirmed AR mini-game direction based on low youth museum engagement. Discussed puzzle levels, AR interaction, virtual roles. Assigned roles and began tech research.<br>
+        <strong>Next Step:</strong> Prototype design & technical feasibility study.
+    </div>
+
+    <div class="meeting-box">
+        <h3>Meeting 2: Plan Adjustment to Check-in System</h3>
+        <strong>Date:</strong> March 21, 2026<br>
+        <strong>Topic:</strong> Project Evaluation & Direction Change<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> AR mini-game proved too costly and low-performance. Changed to lightweight AR check-in navigation with achievements + AR navigation + AI guide. Redefined goals and tech roadmap.<br>
+        <strong>Next Step:</strong> Requirements analysis & function list.
+    </div>
+
+    <div class="meeting-box">
+        <h3>Meeting 3: Tech Stack & Architecture Design</h3>
+        <strong>Date:</strong> March 28, 2026<br>
+        <strong>Topic:</strong> Technology Selection & System Architecture<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> Selected Unity + WebGL. Used UnityWebAR for recognition. Integrated Gemini 1.5 Flash and Azure TTS. Designed 3-layer architecture.<br>
+        <strong>Next Step:</strong> Environment setup & UI prototype.
+    </div>
+
+    <div class="meeting-box">
+        <h3>Meeting 4: Prototype Development & Problem Solving</h3>
+        <strong>Date:</strong> April 4, 2026<br>
+        <strong>Topic:</strong> UI & Basic AR Functions<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> Completed UI prototype and camera tracking. Fixed WebGL compatibility and unstable tracking issues.<br>
+        <strong>Next Step:</strong> Core UI & exhibit recognition.
+    </div>
+
+    <div class="meeting-box">
+        <h3>Meeting 5: Core Functions & API Integration</h3>
+        <strong>Date:</strong> April 11, 2026<br>
+        <strong>Topic:</strong> Check-in, Navigation & AI Interface<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> Finished check-in, achievements, navigation. Connected Gemini & TTS. Optimized speech delay and dialogue logic.<br>
+        <strong>Next Step:</strong> Full function integration.
+    </div>
+
+    <div class="meeting-box">
+        <h3>Meeting 6: System Integration & Optimization</h3>
+        <strong>Date:</strong> April 18, 2026<br>
+        <strong>Topic:</strong> Full System Testing & Performance<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> Tested full workflow. Fixed lag, arrow glitches via model simplification and rendering optimization.<br>
+        <strong>Next Step:</strong> User testing.
+    </div>
+
+    <div class="meeting-box">
+        <h3>Meeting 7: User Testing & Iteration</h3>
+        <strong>Date:</strong> April 20, 2026<br>
+        <strong>Topic:</strong> User Feedback & Experience Upgrade<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> Collected feedback: fun but slow recognition. Improved speed, navigation, and AI explanation simplicity. Fixed browser compatibility.<br>
+        <strong>Next Step:</strong> Documentation.
+    </div>
+
+    <div class="meeting-box">
+        <h3>Meeting 8: Final Acceptance & Video Production</h3>
+        <strong>Date:</strong> May 2, 2026<br>
+        <strong>Topic:</strong> Project Delivery & Presentation<br>
+        <strong>Attendees:</strong> All Members<br>
+        <strong>Details:</strong> All functions completed and stable. Finalized architecture diagrams, process charts, and demo video script.<br>
+        <strong>Next Step:</strong> Final submission.
+    </div>
+
 </div>
 
 </body>
