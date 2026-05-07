@@ -596,10 +596,14 @@
     </div>
     <div class="box" id="architecture-detail">
         <h3>🏛️ System Architecture</h3>
-        <p>Three-layer architecture: Presentation Layer (WebGL frontend), Logic Layer (check‑in, achievements, API gateway), Data Layer (exhibit database, user progress).</p>
+        <p>This project adopts a layered modular architecture to realize the lightweight web deployment of Unity AR projects, ensuring cross-browser compatibility, stable AR interaction and efficient operation. The architecture is divided into four core layers:</p>
+        <p>1. Unity Core AR Layer: Developed based on Unity AR Foundation, integrating core AR functional modules including environmental plane detection, virtual model spatial placement, real-time pose tracking and gesture interaction. This layer unifies the underlying AR computing logic, removes mobile-exclusive redundant components, and lays a compatible foundation for web-side transplantation.</p>
+        <p>2. WebGL Compilation & Optimization Layer: Perform WebGL-specific platform configuration, switch to Universal Render Pipeline (URP) to adapt to web rendering standards, optimize resources through model simplification, texture compression and asynchronous loading, and adjust memory allocation parameters to reduce web-side operating overhead.</p>
+        <p>3. WebAR Adaptation Layer: Connect with WebXR API to implement web-side camera permission invocation and AR tracking data parsing. Develop cross-browser compatibility scripts to unify AR running logic for Chrome, Safari and other mainstream browsers, eliminating interface differences caused by browser kernel heterogeneity.</p>
+        <p>4. Web Integration & Deployment Layer: Realize two-way data communication between front-end web pages and Unity AR scenes through JavaScript. Deploy compiled static resources to a static server, configure cross-domain access policies and resource caching mechanisms to complete public network accessible deployment.</p>
         <hr>
         <h3>🛠️ Key Technical Challenges</h3>
-        <ul><li>Performance: Optimized models → 30+ FPS.</li><li>Tracking Stability: Enhanced feature points + gyroscope.</li><li>AI Latency: Streaming TTS + local cache.</li><li>Compatibility: Adapted camera APIs for Safari/Chrome.</li></ul>
+        <ul><li>WebGL AR Tracking Drift & Delay </li><li> Cross-Browser WebAR Compatibility Issues</li><li>Excessive Web Resource Loading Overhead</li><li>Unity WebGL and Web Frontend Communication Barrier</li></ul>
     </div>
 
     <!-- 个人贡献表格 (仅框架，内容留空待填) -->
