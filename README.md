@@ -61,17 +61,6 @@ To better understand why young people find museums uninteresting and what change
 
 Across all age groups (12–26), young people consistently want museums to shift from **passive observation** to **active participation**. Short-form AR content, gamification, and immersive storytelling were the most frequently requested improvements. Implementing these features could significantly increase young visitors' willingness to attend and engage with museum exhibits.
 
-### Individual Contributions Framework
-
-| NAME | Suduent Number | Task Description | Contribution Ratio |
-| :--- | :--- | :--- | :--- |
-| **Shiqi.Gao** | 2364044 | Poster, Portfolio, Survey, Feedback, Video Shooting | 25% |
-| **Jielin.Wang** | 2364423 | UI Design, Portfolio, Feedback, Video Shooting, Video Production | 25% |
-| **Yi.Li** | 2361372 | Function Design, Interactive Module Development, Testing | 25% |
-| **Kai.Xu** | 2361744 | Function Design, Interactive Module Development, Testing | 25% |
-
-
-
 
 ## 📝 Draft 1
 
@@ -113,5 +102,15 @@ To address this, we optimized the gamification strategy in v2.0.0:
 ## 📝 Draft 2
 
 ![second Draft](https://github.com/JielinWang23/CPT208-A3-2/issues/2#issue-4210725583)
+
+
+
+## Individual Contributions Framework
+| NAME | Suduent Number | Task Description | Contribution Ratio |
+| :--- | :--- | :--- | :--- |
+| **Shiqi.Gao** | 2364044 | Poster, Portfolio, Survey, Feedback, Video Shooting | 25% |
+| **Jielin.Wang** | 2364423 | UI Design, Portfolio, Feedback, Video Shooting, Video Production | 25% |
+| **Yi.Li** | 2361372 | Function Design, Interactive Module Development, Testing | 25% |
+| **Kai.Xu** | 2361744 | Function Design, Interactive Module Development, Testing | 25% |
 
 
