@@ -103,7 +103,8 @@ To address this, we optimized the gamification strategy in v2.0.0:
 
 ![second Draft](https://github.com/JielinWang23/CPT208-A3-2/issues/2#issue-4210725583)
 
-
+## Vibe Coding
+The root object XR Origin (AR Rig) serves as the core tracking system, containing a Camera Offset transform node that adjusts the camera's physical position relative to the AR tracking origin. Within the offset, the Main Camera handles AR visual rendering and pose tracking, while the Screen Space Ray Interactor enables touch-based ray interaction for placing virtual objects in the real world. The Object Spawner component manages the instantiation and placement of AR content, triggered by user input. The AR Session object controls the AR lifecycle, including session initialization, tracking state management, and plane detection. Additional components such as Directional Light and UI provide basic scene lighting and user interface support, ensuring stable visual feedback and interactive experience.
 
 ## Individual Contributions Framework
 | NAME | Suduent Number | Task Description | Contribution Ratio |
