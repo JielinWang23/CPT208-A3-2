@@ -64,13 +64,17 @@ Across all age groups (12–26), young people consistently want museums to shift
 
 ## 📝 Draft 1
 
-![first Draft](issues/1#issue-4200863558)
+![picture of readme/UI draft 1/1](picture%20of%20readme/UI%20draft%201/573555172-40012a77-5d1a-4f17-95e1-d424a76b27f6.png)
+![picture of readme/UI draft 1/2](picture%20of%20readme/UI%20draft%201/573555173-d6bfa06e-4c6f-4f5c-9808-53153ecb3718.png)
+![picture of readme/UI draft 1/3](picture%20of%20readme/UI%20draft%201/573555174-6050d9dc-c39f-4467-bd00-331a4cb27515.png)
 
 
 ## 📝 UI 1
 
-![first UI](issues/3#issue-4259926289)
-
+![first UI 1](picture%20of%20readme/UI/577803414-98ac7eb7-99bf-4a30-b62e-9f61f45b300d.png)
+![first UI 2](picture%20of%20readme/UI/577803412-f1dca4ff-881c-41f1-b62d-d7c6c338dcca.png)
+![first UI 3](picture%20of%20readme/UI/577803415-b36f86ac-bd95-454a-bc5a-c5ee24b74b06.png)
+![first UI 4](picture%20of%20readme/UI/577803416-673be7b0-32b4-4f2a-bae5-40f69f4c54f8.png)
 
 
 # 🚀 Version 2.0
@@ -101,7 +105,9 @@ To address this, we optimized the gamification strategy in v2.0.0:
   
 ## 📝 Draft 2
 
-![second Draft](issues/2#issue-4210725583)
+![draft 2](picture%20of%20readme/UI%20draft%202/574085635-888aa592-e29e-4f5b-a71c-28dcf86c2fdf.png)
+![draft 2](picture%20of%20readme/UI%20draft%202/574085636-133b24af-7b85-427d-822b-bd9ba04f2b24.png)
+![draft 2](picture%20of%20readme/UI%20draft%202/574085637-fdf1af18-d494-4fbe-a2a0-23f32b7634ec.png)
 
 ## UnityAR
 
@@ -115,7 +121,7 @@ The root object XR Origin (AR Rig) serves as the core tracking system, containin
 | :--- | :--- | :--- | :--- |
 | **Shiqi.Gao** | 2364044 | Poster, Portfolio, Survey, Feedback, Video Shooting | 25% |
 | **Jielin.Wang** | 2364423 | UI Design, Portfolio, Feedback, Video Shooting, Video Production | 25% |
-| **Yi.Li** | 2361372 | Function Design, Interactive Module Development, Testing | 25% |
+| **Yi.Li** | 2361372 | Portfolio, Function Design, Interactive Module Development, Testing | 25% |
 | **Kai.Xu** | 2361744 | Function Design, Interactive Module Development, Testing | 25% |
 
 
