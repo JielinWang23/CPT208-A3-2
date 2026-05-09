@@ -64,12 +64,12 @@ Across all age groups (12–26), young people consistently want museums to shift
 
 ## 📝 Draft 1
 
-![first Draft](https://github.com/JielinWang23/CPT208-A3-2/issues/1#issue-4200863558)
+![first Draft](issues/1#issue-4200863558)
 
 
 ## 📝 UI 1
 
-![first UI](https://github.com/JielinWang23/CPT208-A3-2/issues/3#issue-4259926289)
+![first UI](issues/3#issue-4259926289)
 
 
 
@@ -101,7 +101,7 @@ To address this, we optimized the gamification strategy in v2.0.0:
   
 ## 📝 Draft 2
 
-![second Draft](https://github.com/JielinWang23/CPT208-A3-2/issues/2#issue-4210725583)
+![second Draft](issues/2#issue-4210725583)
 
 ## UnityAR
 
