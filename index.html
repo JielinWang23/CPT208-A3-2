@@ -23,7 +23,7 @@
             padding-right: 1.5rem;
         }
 
-        /* ========= 顶部导航栏（修复：使用点击展开，稳定可靠） ========= */
+       
         .navbar {
             position: fixed;
             top: 0;
@@ -99,7 +99,7 @@
             color: #58a6ff;
         }
 
-        /* 显示下拉菜单（由JS控制） */
+        
         .dropdown-content.show {
             display: block;
         }
@@ -365,7 +365,7 @@
 </head>
 <body>
 
-<!-- ========= 顶部导航栏（修复：点击展开/收起） ========= -->
+
 <div class="navbar">
     <div class="dropdown">
         <button class="dropbtn">Motivation and Research ▼</button>
@@ -670,7 +670,7 @@
     </div>
 </div>
 
-<!-- ================= 六、Meeting Records (独立栏，全部展开) ================= -->
+<!-- ================= 六、Meeting Records  ================= -->
 <div class="section" id="meetings-full">
     <h2>🗂️ Meeting Records (Full Process)</h2>
     <div class="meetings-container">
@@ -749,40 +749,40 @@
 </div>
 
 <script>
-// 稳定的下拉菜单交互：点击按钮展开/收起，点击其他地方收起所有
+// 下拉菜单交互
 document.addEventListener('DOMContentLoaded', () => {
     const dropdowns = document.querySelectorAll('.dropdown');
     
-    // 为每个dropdown绑定按钮点击事件
+    // dropdown
     dropdowns.forEach(dropdown => {
         const btn = dropdown.querySelector('.dropbtn');
         const content = dropdown.querySelector('.dropdown-content');
         
         btn.addEventListener('click', (e) => {
-            e.stopPropagation();  // 阻止冒泡，避免立即触发全局关闭
-            // 先关闭所有其他下拉菜单
+            e.stopPropagation();  
+           
             document.querySelectorAll('.dropdown-content').forEach(c => {
                 if (c !== content) c.classList.remove('show');
             });
-            // 切换当前菜单
+            // 切换
             content.classList.toggle('show');
         });
     });
     
-    // 点击页面任意位置关闭所有下拉菜单
+    // 关闭下拉菜单
     document.addEventListener('click', () => {
         document.querySelectorAll('.dropdown-content').forEach(c => {
             c.classList.remove('show');
         });
     });
     
-    // 阻止下拉内容上的点击冒泡，以免点击内部链接时意外关闭菜单
+   
     document.querySelectorAll('.dropdown-content').forEach(c => {
         c.addEventListener('click', (e) => e.stopPropagation());
     });
 });
 
-// 访谈折叠功能（不受导航影响）
+// 访谈折叠
 function toggleInterview(id) {
     const content = document.getElementById(id);
     const icon = document.getElementById(id + 'Icon');
@@ -791,7 +791,7 @@ function toggleInterview(id) {
     icon.textContent = content.classList.contains('active') ? '−' : '+';
 }
 
-// 初始折叠区全部收起
+
 window.addEventListener('load', () => {
     document.querySelectorAll('.interview-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('[id$="Icon"]').forEach(icon => icon.textContent = '+');
